@@ -4,15 +4,12 @@ import {
   useStripe,
   useElements
 } from "@stripe/react-stripe-js";
-
+import PayButton from "./PayButton";
 import styled from "styled-components";
 
-const PayButton = styled.button`
-  border: none;
-  color: #fff;
-  background: green;
-  align-self: center;
-  padding: 1rem 2rem;
+const CenteringDiv = styled.div`
+  width: 80%;
+  margin: 0 auto;
 `
 
 export default function CheckoutForm() {
@@ -89,15 +86,21 @@ export default function CheckoutForm() {
   };
 
   return (
-    <form id="payment-form" onSubmit={handleSubmit}>
-      <PaymentElement id="payment-element" />
-      <PayButton disabled={isLoading || !stripe || !elements} id="submit">
-        <span id="button-text">
-          {isLoading ? <div className="spinner" id="spinner"></div> : "Pay now"}
-        </span>
-      </PayButton>
-      {/* Show any error or success messages */}
-      {message && <div id="payment-message">{message}</div>}
-    </form>
+    <CenteringDiv>
+      <form id="payment-form" onSubmit={handleSubmit}>
+        <PaymentElement id="payment-element" />
+        <PayButton 
+          // isDisabled={isLoading || !stripe || !elements} 
+          isDisabled={true} 
+          id="submit"
+        >
+          <span id="button-text">
+            {isLoading ? <div className="spinner" id="spinner"></div> : "Pay now"}
+          </span>
+        </PayButton>
+        {/* Show any error or success messages */}
+        {message && <div id="payment-message">{message}</div>}
+      </form>
+    </CenteringDiv>
   );
 }
