@@ -4,6 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "dev-start": "nodemon server/index.js",
     "start": "node server/index.js",
     "build": "cd client && npm install && npm run build"
   },
@@ -11,9 +12,13 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "express": "^4.17.2"
+    "express": "^4.17.2",
+    "stripe": "^8.195.0"
   },
   "engines": {
     "node": "14.16.0"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.15"
   }
 }
