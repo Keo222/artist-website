@@ -2,59 +2,92 @@ import React from 'react';
 import styled from "styled-components";
 import {Link} from "react-router-dom";
 
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faShoppingCart } from '@fortawesome/free-solid-svg-icons'
+
 const Nav = styled.nav `
   background: #444;
-  height: 10vh;
+  height: 10rem;
   display: flex;
   box-shadow: 0px 8px 16px 8px rgba(0,0,0,0.22);
   text-align: center;
 `
 
 const LogoDiv = styled.div`
-  flex-basis: 15%;
+  flex-basis: 10%;
 `
+const Logo = styled.h3`
+  font-family: 'Rock 3D', cursive;
+  font-size: 3rem;
+  color: yellowgreen;
+  transform: translateY(-0.5rem);
+  margin-left: 1rem;
+`
+
 const NavLinks = styled.div`
-  flex-basis: 70%;
+  flex-basis: 45%;
   display: flex;
   align-content: center;
-  justify-content: center;
+  /* justify-content: center; */
 `
-const ShoppingCartLink = styled.div`
-  flex-basis: 15%;
+const ShoppingCartDiv = styled.div`
+  flex-basis: 40%;
+  color: yellowgreen;
+  font-size: 2.5rem;
+  position: absolute;
+  top: 1.1rem;
+  right: 3rem;
+  padding: 2rem;
+  border: 1px solid yellowgreen;
+  border-radius: 50%;
+  cursor: pointer;
+`
+const NumItemsInCart = styled.div`
+  position: absolute;
+  top: 1.2rem;
+  right: 0.8rem;
+  width: 2rem;
+  height: 2rem;
+  background-color: #eee;
+  color: #333;
+  font-size: 1.4rem;
+  font-weight: 700;
+  line-height: 2rem;
+  border-radius: 50%;
 `
 
 const LinkBtn = styled(Link)`
-  font-size: 2rem;
-  padding: 1rem 2rem;
+  font-size: 1.6rem;
+  padding: 1.3rem 2.5rem;
   color: white;
   text-decoration: none;
-  margin: auto auto;
-  transition: all .2s;
-  border: 1px solid white;
-  border-radius: 3px;
-  box-shadow: 0px 8px 16px 8px rgba(0,0,0,0.22);
+  margin: auto 3rem;
+  transition: all .4s;
+  border-radius: 9px;
   
   &:hover {
     transform: translateY(-2px);
-    box-shadow: 0px 10px 20px 10px rgba(0,0,0,0.19);
+    box-shadow: 0px 10px 20px 10px rgba(0,0,0, 0.19);
+    background: #777;
   }
 `
 
-function Navbar() {
+function Navbar({showMiniCart, setMiniCart}) {
   return (
     <Nav>
       <LogoDiv>
-        <h3>REEDS</h3>
+        <Logo>REEDS</Logo>
       </LogoDiv>
       <NavLinks>
         <LinkBtn to="/">Home</LinkBtn>
+        <LinkBtn to="/art">Art</LinkBtn>
         <LinkBtn to="/about">About</LinkBtn>
         <LinkBtn to="/contact">Contact</LinkBtn>
-        <LinkBtn to="/checkout">Checkout</LinkBtn>
       </NavLinks>
-      <ShoppingCartLink>
-        <h3>CART</h3>
-      </ShoppingCartLink>
+      <ShoppingCartDiv onClick={() => setMiniCart(!showMiniCart)}>
+        <NumItemsInCart>2</NumItemsInCart>
+        <FontAwesomeIcon icon={faShoppingCart} />
+      </ShoppingCartDiv>
     </Nav>
   )
 }
