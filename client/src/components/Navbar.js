@@ -21,8 +21,6 @@ const Logo = styled.h3`
   font-family: 'Rock 3D', cursive;
   font-size: 5rem;
   color: yellowgreen;
-  /* transform: translateY(-0.5rem); */
-  /* text-align: initial; */
   margin: 1rem auto;
 `
 
@@ -50,7 +48,7 @@ const NumItemsInCart = styled.div`
   right: 0.8rem;
   width: 2rem;
   height: 2rem;
-  background-color: #eee;
+  background-color: #fff;
   color: #333;
   font-size: 1.4rem;
   font-weight: 700;
@@ -84,10 +82,11 @@ function Navbar({showMiniCart, setMiniCart}) {
         <LinkBtn to="/">Home</LinkBtn>
         <LinkBtn to="/art">Art</LinkBtn>
         <LinkBtn to="/about">About</LinkBtn>
+        <LinkBtn to="/portfolio">Portfolio</LinkBtn>
         <LinkBtn to="/contact">Contact</LinkBtn>
       </NavLinks>
       <ShoppingCartDiv onClick={() => setMiniCart(!showMiniCart)}>
-        <NumItemsInCart>2</NumItemsInCart>
+        <NumItemsInCart>0</NumItemsInCart>
         <FontAwesomeIcon icon={faShoppingCart} />
       </ShoppingCartDiv>
     </Nav>

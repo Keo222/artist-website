@@ -4,6 +4,8 @@ import { Link } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faShoppingCart, faTimes } from '@fortawesome/free-solid-svg-icons'
 
+import MiniCartItem from './MiniCartItem';
+
 const MiniCartContainer = styled.div`
   z-index: 10;
   position: absolute;
@@ -64,42 +66,42 @@ const CartItems = styled.div`
   }
 `
 
-const MiniItemContainer = styled.div`
-  width: 80%;
-  height: 10rem;
-  margin: 2rem auto;
-  border-radius: 10px;
-  display: flex;
-  background: #fff;
-  /* text-align: center; */
-  justify-content: center;
-`
+// const MiniItemContainer = styled.div`
+//   width: 80%;
+//   height: 10rem;
+//   margin: 2rem auto;
+//   border-radius: 10px;
+//   display: flex;
+//   background: #fff;
+//   /* text-align: center; */
+//   justify-content: center;
+// `
 
-const DeleteItem = styled.div`
-  margin: auto;
-  margin-left: 2rem;
-  font-size: 1.4rem;
-`
+// const DeleteItem = styled.div`
+//   margin: auto;
+//   margin-left: 2rem;
+//   font-size: 1.4rem;
+// `
 
-const ItemName = styled.p`
-  display: block;
-  margin-left: 3rem;
-  font-size: 1.6rem ;
-  padding-top: 2rem;
-  width: 50%;
-`
+// const ItemName = styled.p`
+//   display: block;
+//   margin-left: 3rem;
+//   font-size: 1.6rem ;
+//   padding-top: 2rem;
+//   width: 50%;
+// `
 
-const ItemPrice = styled.p`
-  width: 20%;
-  font-size: 1.6rem ;
-  padding-top: 2rem;
-`
+// const ItemPrice = styled.p`
+//   width: 20%;
+//   font-size: 1.6rem ;
+//   padding-top: 2rem;
+// `
 
-const QtyNum = styled.p`
-  width: 20%;
-  font-size: 1.6rem ;
-  padding-top: 2rem;
-`
+// const QtyNum = styled.p`
+//   width: 20%;
+//   font-size: 1.6rem ;
+//   padding-top: 2rem;
+// `
 
 const ButtonContainer = styled.div`
   height: 15%;
@@ -150,70 +152,7 @@ function MiniCart({showMiniCart, setMiniCart}) {
       </TitleContainer>
       {/* CART ITEMS */}
       <CartItems>
-        <MiniItemContainer>
-          <DeleteItem>
-            <FontAwesomeIcon icon={faTimes} />
-          </DeleteItem>
-          <ItemName>ART PIECE</ItemName>
-          <QtyNum>Qty: 1</QtyNum>
-          <ItemPrice>$25.00</ItemPrice>
-        </MiniItemContainer>
-        <MiniItemContainer>
-          <DeleteItem>
-            <FontAwesomeIcon icon={faTimes} />
-          </DeleteItem>
-          <ItemName>ART PIECE</ItemName>
-          <QtyNum>Qty: 1</QtyNum>
-          <ItemPrice>$25.00</ItemPrice>
-        </MiniItemContainer>
-        <MiniItemContainer>
-          <DeleteItem>
-            <FontAwesomeIcon icon={faTimes} />
-          </DeleteItem>
-          <ItemName>ART PIECE</ItemName>
-          <QtyNum>Qty: 1</QtyNum>
-          <ItemPrice>$25.00</ItemPrice>
-        </MiniItemContainer>
-        <MiniItemContainer>
-          <DeleteItem>
-            <FontAwesomeIcon icon={faTimes} />
-          </DeleteItem>
-          <ItemName>ART PIECE</ItemName>
-          <QtyNum>Qty: 1</QtyNum>
-          <ItemPrice>$25.00</ItemPrice>
-        </MiniItemContainer>
-        <MiniItemContainer>
-          <DeleteItem>
-            <FontAwesomeIcon icon={faTimes} />
-          </DeleteItem>
-          <ItemName>ART PIECE</ItemName>
-          <QtyNum>Qty: 1</QtyNum>
-          <ItemPrice>$25.00</ItemPrice>
-        </MiniItemContainer>
-        <MiniItemContainer>
-          <DeleteItem>
-            <FontAwesomeIcon icon={faTimes} />
-          </DeleteItem>
-          <ItemName>ART PIECE</ItemName>
-          <QtyNum>Qty: 1</QtyNum>
-          <ItemPrice>$25.00</ItemPrice>
-        </MiniItemContainer>
-        <MiniItemContainer>
-          <DeleteItem>
-            <FontAwesomeIcon icon={faTimes} />
-          </DeleteItem>
-          <ItemName>ART PIECE</ItemName>
-          <QtyNum>Qty: 1</QtyNum>
-          <ItemPrice>$25.00</ItemPrice>
-        </MiniItemContainer>
-        <MiniItemContainer>
-          <DeleteItem>
-            <FontAwesomeIcon icon={faTimes} />
-          </DeleteItem>
-          <ItemName>ART PIECE</ItemName>
-          <QtyNum>Qty: 1</QtyNum>
-          <ItemPrice>$25.00</ItemPrice>
-        </MiniItemContainer>
+        <MiniCartItem name="ART" qty={2} />
       </CartItems>
 
       {/* PURCHASE BUTTON TO GO TO CHECKOUT PAGE */}
