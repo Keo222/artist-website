@@ -17,11 +17,13 @@ const LogoDiv = styled.div`
   flex-basis: 10%;
 `
 const Logo = styled.h3`
+  display: block;
   font-family: 'Rock 3D', cursive;
-  font-size: 3rem;
+  font-size: 5rem;
   color: yellowgreen;
-  transform: translateY(-0.5rem);
-  margin-left: 1rem;
+  /* transform: translateY(-0.5rem); */
+  /* text-align: initial; */
+  margin: 1rem auto;
 `
 
 const NavLinks = styled.div`
@@ -76,7 +78,7 @@ function Navbar({showMiniCart, setMiniCart}) {
   return (
     <Nav>
       <LogoDiv>
-        <Logo>REEDS</Logo>
+        <Logo>FW</Logo>
       </LogoDiv>
       <NavLinks>
         <LinkBtn to="/">Home</LinkBtn>
