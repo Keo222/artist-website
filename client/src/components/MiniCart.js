@@ -11,7 +11,7 @@ const MiniCartContainer = styled.div`
   right: 0;
   min-width: 20rem;
   width: 30%;
-  height: 70rem;
+  height: 80rem;
   background: #ddd;
   /* border: 1px solid #333;
   border-top: none;
@@ -105,21 +105,27 @@ const ButtonContainer = styled.div`
   height: 15%;
   width: 100%;
   margin: 0 auto;
+  text-align: center;
   box-shadow: 0 -2px 10px 0px rgba(0, 0, 0, 0.3);
+`
+
+const Total = styled.h4`
+  font-size: 1.6rem;
+  margin: 1.4rem;
+  color: #444;
 `
 
 const PurchaseButton = styled(Link)`
   display: block;
   width: 25%;
   text-decoration: none;
-  text-align: center;
   color: #444;
   font-size: 1.6rem;
   font-weight: 700;
   background-color: yellowgreen;
   padding: 2rem 5rem;
   margin: auto;
-  margin-top: 2rem;
+  margin-top: 0;
   border-radius: 10px;
 `
 
@@ -212,6 +218,7 @@ function MiniCart({showMiniCart, setMiniCart}) {
 
       {/* PURCHASE BUTTON TO GO TO CHECKOUT PAGE */}
       <ButtonContainer>
+        <Total>Total: $200.00</Total>
         <PurchaseButton to="/checkout" onClick={() => setMiniCart(!showMiniCart)}>Checkout</PurchaseButton>
       </ButtonContainer>
 
