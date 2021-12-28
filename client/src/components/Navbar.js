@@ -72,7 +72,7 @@ const LinkBtn = styled(Link)`
   }
 `
 
-function Navbar({showMiniCart, setMiniCart}) {
+function Navbar({showMiniCart, setMiniCart, cart}) {
   return (
     <Nav>
       <LogoDiv>
@@ -86,7 +86,7 @@ function Navbar({showMiniCart, setMiniCart}) {
         <LinkBtn to="/contact">Contact</LinkBtn>
       </NavLinks>
       <ShoppingCartDiv onClick={() => setMiniCart(!showMiniCart)}>
-        <NumItemsInCart>0</NumItemsInCart>
+        <NumItemsInCart>{cart.length}</NumItemsInCart>
         <FontAwesomeIcon icon={faShoppingCart} />
       </ShoppingCartDiv>
     </Nav>

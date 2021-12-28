@@ -1,4 +1,4 @@
-import React, {useState} from 'react'
+import React from 'react'
 import styled from 'styled-components';
 
 const CenteringDiv = styled.div`
@@ -6,7 +6,6 @@ const CenteringDiv = styled.div`
 `
 
 function ShoppingCart() {
-  const [cart, setcart] = useState({})
   return (
     <CenteringDiv>
       <h2>SHOPPING CART</h2>

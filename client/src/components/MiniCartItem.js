@@ -10,7 +10,6 @@ const MiniItemContainer = styled.div`
   border-radius: 10px;
   display: flex;
   background: #fff;
-  /* text-align: center; */
   justify-content: center;
 `
 
@@ -18,6 +17,7 @@ const DeleteItem = styled.div`
   margin: auto;
   margin-left: 2rem;
   font-size: 1.4rem;
+  cursor: pointer;
 `
 
 const ItemName = styled.p`
@@ -40,15 +40,31 @@ const QtyNum = styled.p`
   padding-top: 2rem;
 `
 
-function MiniCartItem({name, qty}) {
+function MiniCartItem({name, price, id, cart, setCart, qty}) {
+  const deleteItem = (id) => {
+    const i = cart.indexOf(id);
+    const cartCopy = [...cart]
+    cartCopy.splice(i, 1);
+    setCart(cartCopy);
+  }
   return (
     <MiniItemContainer>
-      <DeleteItem>
+      <DeleteItem onClick={() => deleteItem(id)}>
         <FontAwesomeIcon icon={faTimes} />
       </DeleteItem>
       <ItemName>{name}</ItemName>
-      <QtyNum>Qty: {qty}</QtyNum>
-      <ItemPrice>$25.00</ItemPrice>
+      <QtyNum>
+        <label htmlFor="numItems">Qty:</label>
+        <select name="numItems" id="numItems" defaultValue={qty}>
+          {/* <option value="0">0</option> */}
+          <option value="1">1</option>
+          <option value="2">2</option>
+          <option value="3">3</option>
+          <option value="4">4</option>
+          <option value="5">5</option>
+        </select>
+      </QtyNum>
+      <ItemPrice>${price}.00</ItemPrice>
     </MiniItemContainer>
   )
 }

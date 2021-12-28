@@ -50,15 +50,32 @@ const GlobalStyle = createGlobalStyle`
 
 function App() {
   const [showMiniCart, setMiniCart] = useState(false);
+  const [cart, setCart] = useState([])
+
+  const setAddCartButton = async (item) => {
+    let updatedCart
+    const included = cart.some(i => i.id === item)
+    console.log(included)
+    if (!included) {
+      updatedCart = [...cart, {id: item, amt: 1}]
+    } else {
+      updatedCart = [...cart]
+      const itemIndex = cart.findIndex(i => i.id === item)
+      console.log(itemIndex)
+      // updatedCart[itemIndex].id = item;
+      updatedCart[itemIndex].amt += 1;
+    }
+    setCart(updatedCart)
+  }
   return (
     <div>
       <GlobalStyle />
       <Router>
-      <Navbar showMiniCart={showMiniCart} setMiniCart={setMiniCart} />
-      <MiniCart showMiniCart={showMiniCart} setMiniCart={setMiniCart} />
+      <Navbar showMiniCart={showMiniCart} setMiniCart={setMiniCart} cart={cart} />
+      <MiniCart showMiniCart={showMiniCart} setMiniCart={setMiniCart} art={exampleArt} cart={cart} setCart={setCart} />
         <Routes>
           <Route path="/" element={<Home />} />
-          <Route path="/art" element={<Art art={exampleArt} />} />
+          <Route path="/art" element={<Art art={exampleArt} cart={cart} setAddCartButton={setAddCartButton} />} />
           <Route path="/about" element={<About />} />
           <Route path="/portfolio" element={<Portfolio />} />
           <Route path="/contact" element={<Contact />} />

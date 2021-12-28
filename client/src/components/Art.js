@@ -36,13 +36,28 @@ const SaleItems = styled.div`
   margin-top: 5rem;
 `
 
-function Art({art}) {
+// PRINT CART STATE
+const PrintState = styled.div`
+  width: 15rem;
+  height: 5rem;
+  font-weight: 700;
+  border-radius: 20px;
+  background: yellowgreen;
+  text-align: center;
+  vertical-align: middle;
+  line-height: 5rem;
+  margin: 0 auto;
+  cursor: pointer;
+`
+
+function Art({art, cart, setAddCartButton}) {
   const artListings = art.map(a =>
-      <ArtSaleItem name={a.name} desc={a.desc} price={a.price} pic={a.img}/>
+      <ArtSaleItem name={a.name} desc={a.desc} price={a.price} pic={a.img} id={a.id} cart={cart} setAddCartButton={setAddCartButton} />
     )
 
   return (
     <AboutDiv>
+    <PrintState onClick={() => console.log(cart)}>Print</PrintState>
     <LeftInfoDiv>
       <TextDiv>
         <AboutHeading>Art</AboutHeading>

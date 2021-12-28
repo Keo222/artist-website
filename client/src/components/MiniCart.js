@@ -4,6 +4,8 @@ import { Link } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faShoppingCart, faTimes } from '@fortawesome/free-solid-svg-icons'
 
+import { v4 as uuid } from 'uuid';
+
 import MiniCartItem from './MiniCartItem';
 
 const MiniCartContainer = styled.div`
@@ -131,7 +133,11 @@ const PurchaseButton = styled(Link)`
   border-radius: 10px;
 `
 
-function MiniCart({showMiniCart, setMiniCart}) {
+function MiniCart({showMiniCart, setMiniCart, art, cart, setCart}) {
+  const cartItemCards = cart.map(a => {
+    const item = art.find(i => i.id === a.id)
+    return (<MiniCartItem key={uuid()} name={item.name} price={item.price} id={a.id} cart={cart} setCart={setCart} qty={a.amt} />)
+  })
   return (
     <MiniCartContainer visible={showMiniCart}>
       {/* CART TITLE */}
@@ -152,7 +158,7 @@ function MiniCart({showMiniCart, setMiniCart}) {
       </TitleContainer>
       {/* CART ITEMS */}
       <CartItems>
-        <MiniCartItem name="ART" qty={2} />
+        {cartItemCards}
       </CartItems>
 
       {/* PURCHASE BUTTON TO GO TO CHECKOUT PAGE */}

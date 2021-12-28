@@ -2,13 +2,6 @@ import React from 'react';
 
 import styled from 'styled-components';
 
-import screamPic from '../imgs/scream.jpg'
-import monaLisaPic from '../imgs/monaLisa.jpg'
-import watermelonPic from '../imgs/watermelon.jpg'
-
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faCartPlus } from '@fortawesome/free-solid-svg-icons'
-
 // const SaleDiv = styled.div`
 //   width: 80%;
 //   height: 40rem;
@@ -133,7 +126,7 @@ const ArtImg = styled.img`
   max-width: 100%;
 `
 
-function ArtSaleItem({name, desc, price, pic}) {
+function ArtSaleItem({name, desc, price, pic, id, cart, setAddCartButton}) {
   return (
     // <>
     // <SaleDiv>
@@ -165,7 +158,7 @@ function ArtSaleItem({name, desc, price, pic}) {
         <p>{desc}</p>
         <PartialHR />
         <Price>${price}</Price>
-        <AddToCartButton>Add to Cart</AddToCartButton>
+        <AddToCartButton onClick={() => setAddCartButton(id)}>Add to Cart</AddToCartButton>
       </SaleInfoDiv>
       <ImgDiv>
         <ArtImg src={pic}/>
