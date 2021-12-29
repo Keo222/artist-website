@@ -41,10 +41,14 @@ const QtyNum = styled.p`
 `
 
 function MiniCartItem({name, price, id, cart, setCart, qty}) {
-  const deleteItem = (id) => {
-    const i = cart.indexOf(id);
+  const deleteItem = (item) => {
+    console.log(cart)
+    console.log(item)
+    const idx = cart.findIndex(i => i.id === item)
+    console.log(idx)
     const cartCopy = [...cart]
-    cartCopy.splice(i, 1);
+    cartCopy.splice(idx, 1);
+    console.log(cartCopy)
     setCart(cartCopy);
   }
   return (
@@ -64,7 +68,7 @@ function MiniCartItem({name, price, id, cart, setCart, qty}) {
           <option value="5">5</option>
         </select>
       </QtyNum>
-      <ItemPrice>${price}.00</ItemPrice>
+      <ItemPrice>${price * qty}.00</ItemPrice>
     </MiniItemContainer>
   )
 }

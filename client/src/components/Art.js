@@ -52,7 +52,7 @@ const PrintState = styled.div`
 
 function Art({art, cart, setAddCartButton}) {
   const artListings = art.map(a =>
-      <ArtSaleItem name={a.name} desc={a.desc} price={a.price} pic={a.img} id={a.id} cart={cart} setAddCartButton={setAddCartButton} />
+      <ArtSaleItem name={a.name} desc={a.desc} price={a.price} pic={a.img} id={a.id} cart={cart} setAddCartButton={setAddCartButton} key={a.id}/>
     )
 
   return (

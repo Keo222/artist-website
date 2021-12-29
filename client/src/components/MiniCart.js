@@ -134,10 +134,25 @@ const PurchaseButton = styled(Link)`
 `
 
 function MiniCart({showMiniCart, setMiniCart, art, cart, setCart}) {
-  const cartItemCards = cart.map(a => {
-    const item = art.find(i => i.id === a.id)
-    return (<MiniCartItem key={uuid()} name={item.name} price={item.price} id={a.id} cart={cart} setCart={setCart} qty={a.amt} />)
+  const cartItemCards = cart.map(c => {
+    const item = art.find(i => i.id === c.id);
+    return (<MiniCartItem key={uuid()} name={item.name} price={item.price} id={item.id} cart={cart} setCart={setCart} qty={c.amt} />)
   })
+
+  const findTotal = () => {
+    let total = 0
+    if (cart.length > 0) {
+      for (let i = 0; i < cart.length; i++) {
+        const idx = art.findIndex(a => a.id === cart[i].id)
+        console.log(cart[i].amt)
+        console.log(art[idx].price)
+        total += art[idx].price * cart[i].amt
+      }
+    }
+    return total
+  }  
+
+  const total = findTotal()
   return (
     <MiniCartContainer visible={showMiniCart}>
       {/* CART TITLE */}
@@ -163,7 +178,7 @@ function MiniCart({showMiniCart, setMiniCart, art, cart, setCart}) {
 
       {/* PURCHASE BUTTON TO GO TO CHECKOUT PAGE */}
       <ButtonContainer>
-        <Total>Total: $200.00</Total>
+        <Total>Total: ${total}.00</Total>
         <PurchaseButton to="/checkout" onClick={() => setMiniCart(!showMiniCart)}>Checkout</PurchaseButton>
       </ButtonContainer>
 

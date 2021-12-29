@@ -55,14 +55,11 @@ function App() {
   const setAddCartButton = async (item) => {
     let updatedCart
     const included = cart.some(i => i.id === item)
-    console.log(included)
     if (!included) {
       updatedCart = [...cart, {id: item, amt: 1}]
     } else {
       updatedCart = [...cart]
       const itemIndex = cart.findIndex(i => i.id === item)
-      console.log(itemIndex)
-      // updatedCart[itemIndex].id = item;
       updatedCart[itemIndex].amt += 1;
     }
     setCart(updatedCart)
