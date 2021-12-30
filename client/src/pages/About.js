@@ -1,23 +1,25 @@
 import React from 'react';
 import styled from 'styled-components';
 import { TextDiv, PageDiv } from '../StyledElements/divs';
+import { Heading, ParagraphText } from '../StyledElements/typography';
 
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faInstagram, faSoundcloud } from '@fortawesome/free-brands-svg-icons';
 
 
-const AboutHeading = styled.h1`
-  color: ${props => props.theme.highlightColor};
-  font-family: 'Rock 3D', cursive;
-  font-size: 6rem;
-  padding-top: 3rem;
-`
+// const AboutHeading = styled.h1`
+//   color: ${props => props.theme.highlightColor};
+//   font-family: 'Rock 3D', cursive;
+//   font-size: 6rem;
+//   padding-top: 3rem;
+// `
 
-const AboutText = styled.p`
-  font-size: 2rem;
-  color: #ddd;
-`
+// const AboutText = styled.p`
+//   font-size: 2rem;
+//   color: #ddd;
+// `
+
 const AboutContainer = styled.div`
   width: 60%;
   margin: 0 auto;
@@ -39,11 +41,11 @@ function About() {
   return (
     <PageDiv>
     <TextDiv>
-      <AboutHeading>ABOUT</AboutHeading>
+      <Heading>ABOUT</Heading>
       <AboutContainer>
-        <AboutText>
+        <ParagraphText>
           Frankie Winterbourne is an artist residing in Portland, OR. They primarily focus on screenprinting, but also enjoy ceramics, making stickers, and crying while pooping. Frankie really needs to send me a bio soon so I can complete this part. Here is some filler text that only Dryden can read: Lorem ipsum, dolor sit amet consectetur adipisicing elit. Repudiandae ut accusantium officia iure? Corrupti autem doloremque, voluptate sed quod deserunt veritatis assumenda? Laboriosam ad, nemo illo ipsa sint ea porro cumque consequuntur et, rerum officia iste odio magni omnis unde recusandae culpa ducimus, minima maxime. Harum, molestias. Molestiae, autem. Soluta, maiores architecto iure quam obcaecati adipisci quis impedit vitae pariatur quo harum vel consectetur suscipit, id reiciendis, dolores nostrum corporis voluptas quidem voluptatem atque accusamus ipsum nihil hic. Illo ipsam voluptatum eligendi saepe harum ab doloremque eos consequuntur. Tempora, facilis.
-        </AboutText>
+        </ParagraphText>
       </AboutContainer>
       <SocialLinksDiv>
         <SocialLink href="https://www.instagram.com/frank_winterbourne/" target="_blank">

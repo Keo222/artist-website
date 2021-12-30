@@ -9,13 +9,12 @@ const FooterDiv = styled.div`
   width: 100%;
   position: fixed;
   bottom: 0;
-  width: 100%auto;
   height: 4rem;
   background: #333;
   color: #eee;
   bottom: 0;
 
-  @media screen and (max-width: 600px){
+  @media screen and (${props => props.theme.sm}){
     display: none;
   }
 `
