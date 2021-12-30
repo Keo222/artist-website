@@ -7,10 +7,10 @@ export const Heading = styled.h1`
   padding-top: 3rem;
 
   @media screen and (${props => props.theme.sm}) {
-    font-size: 3rem;
+    font-size: 4rem;
   }
   @media screen and (${props => props.theme.xs}) {
-    font-size: 2rem;
+    font-size: 3rem;
   }
   `
 
