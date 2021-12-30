@@ -55,6 +55,7 @@ const CloseButton = styled.div`
 const CartItems = styled.div`
   height: 75%;
   overflow-y: scroll;
+  margin: 2rem 0;
   &::-webkit-scrollbar {
     width: 1rem;
   }
