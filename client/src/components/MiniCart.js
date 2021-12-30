@@ -15,7 +15,7 @@ const MiniCartContainer = styled.div`
   right: 0;
   min-width: 20rem;
   width: 30%;
-  min-height: 60rem;
+  max-height: 60rem;
   height: 60%;
   background: #ddd;
   border-radius: 0 0 0 10px;
