@@ -16,6 +16,10 @@ const Nav = styled.nav `
 const LogoDiv = styled.div`
   flex-basis: 10%;
 `
+const LogoLink = styled(Link)`
+  text-decoration: none;
+`
+
 const Logo = styled.h3`
   display: block;
   font-family: 'Rock 3D', cursive;
@@ -73,20 +77,22 @@ const LinkBtn = styled(Link)`
 `
 
 function Navbar({showMiniCart, setMiniCart, cart}) {
+  const totalItems = cart.reduce((sum, {amt}) => sum + amt, 0);
   return (
     <Nav>
       <LogoDiv>
-        <Logo>FW</Logo>
+        <LogoLink to="/">
+          <Logo>FW</Logo>
+        </LogoLink>
       </LogoDiv>
       <NavLinks>
-        <LinkBtn to="/">Home</LinkBtn>
-        <LinkBtn to="/art">Art</LinkBtn>
-        <LinkBtn to="/about">About</LinkBtn>
+        <LinkBtn to="/art">Store</LinkBtn>
         <LinkBtn to="/portfolio">Portfolio</LinkBtn>
-        <LinkBtn to="/contact">Contact</LinkBtn>
+        <LinkBtn to="/about">About</LinkBtn>
+        <LinkBtn to="/contact">Commissions</LinkBtn>
       </NavLinks>
       <ShoppingCartDiv onClick={() => setMiniCart(!showMiniCart)}>
-        <NumItemsInCart>{cart.length}</NumItemsInCart>
+        <NumItemsInCart>{totalItems}</NumItemsInCart>
         <FontAwesomeIcon icon={faShoppingCart} />
       </ShoppingCartDiv>
     </Nav>

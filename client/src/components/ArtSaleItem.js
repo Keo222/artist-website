@@ -15,6 +15,7 @@ const SaleInfoDiv = styled.div`
   width: 30%;
   font-size: 1.6rem;
   text-align: center;
+  color: #222;
 `
 
 const ArtTitle = styled.h4`
@@ -34,12 +35,21 @@ const AddToCartButton = styled.div`
   height: 5rem;
   font-weight: 700;
   border-radius: 20px;
+  color: #222;
   background: yellowgreen;
   text-align: center;
   vertical-align: middle;
   line-height: 5rem;
   margin: 0 auto;
   cursor: pointer;
+  transition: all 0.3s;
+
+  &:hover {
+    background: #222;
+    color: yellowgreen;
+    /* box-shadow: 0 5px 10px 4px rgba(0,0,0,.3); */
+    /* transform: translateY(-2px); */
+  }
 `
 
 const PartialHR = styled.hr`

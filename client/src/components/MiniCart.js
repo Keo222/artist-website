@@ -17,13 +17,12 @@ const MiniCartContainer = styled.div`
   width: 30%;
   height: 80rem;
   background: #ddd;
-  /* border: 1px solid #333;
-  border-top: none;
-  border-right: none; */
   border-radius: 0 0 0 10px;
   box-shadow: 0 10px 10px 10px rgba(0, 0, 0, 0.3);
   display: ${props => props.visible ? 'flex' : 'none'} ;
+  transform: translateY(-100rem);
   flex-direction: column;
+  transition: all .8s;
 `
 const TitleContainer = styled.div`
   display: flex;
@@ -123,7 +122,7 @@ const PurchaseButton = styled(Link)`
   display: block;
   width: 25%;
   text-decoration: none;
-  color: #444;
+  color: #222;
   font-size: 1.6rem;
   font-weight: 700;
   background-color: yellowgreen;
@@ -131,6 +130,14 @@ const PurchaseButton = styled(Link)`
   margin: auto;
   margin-top: 0;
   border-radius: 10px;
+  transition: all 0.3s;
+
+  &:hover {
+    background: #222;
+    color: yellowgreen;
+    /* box-shadow: 0 5px 10px 4px rgba(0,0,0,.3); */
+    /* transform: translateY(-2px); */
+  }
 `
 
 function MiniCart({showMiniCart, setMiniCart, art, cart, setCart}) {
