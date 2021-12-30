@@ -36,7 +36,7 @@ const AddToCartButton = styled.div`
   font-weight: 700;
   border-radius: 20px;
   color: #222;
-  background: yellowgreen;
+  background: ${props => props.theme.highlightColor};
   text-align: center;
   vertical-align: middle;
   line-height: 5rem;
@@ -46,7 +46,7 @@ const AddToCartButton = styled.div`
 
   &:hover {
     background: #222;
-    color: yellowgreen;
+    color: ${props => props.theme.highlightColor};
     /* box-shadow: 0 5px 10px 4px rgba(0,0,0,.3); */
     /* transform: translateY(-2px); */
   }

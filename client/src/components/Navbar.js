@@ -28,7 +28,7 @@ const Logo = styled.h3`
   display: block;
   font-family: 'Rock 3D', cursive;
   font-size: 5rem;
-  color: yellowgreen;
+  color: ${props => props.theme.highlightColor};
   margin: 1rem auto;
 `
 
@@ -40,13 +40,13 @@ const NavLinks = styled.div`
 `
 const ShoppingCartDiv = styled.div`
   flex-basis: 40%;
-  color: yellowgreen;
+  color: ${props => props.theme.highlightColor};
   font-size: 2.5rem;
   position: absolute;
   top: 1.1rem;
   right: 3rem;
   padding: 2rem;
-  border: 1px solid yellowgreen;
+  border: 1px solid ${props => props.theme.highlightColor};
   border-radius: 50%;
   cursor: pointer;
 `
@@ -76,7 +76,7 @@ const LinkBtn = styled(Link)`
   &:after {
     display: block;
     content: '';
-    border-bottom: solid 3px yellowgreen;
+    border-bottom: solid 3px ${props => props.theme.highlightColor};
     transform: scaleX(0);
     transition: transform .25s ease-in-out;
     border-radius: 20px;

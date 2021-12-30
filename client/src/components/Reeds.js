@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import { TextDiv } from '../StyledElements/divs';
 
 const AboutHeading = styled.h1`
-  color: yellowgreen;
+  color: ${props => props.theme.highlightColor};
   font-family: 'Rock 3D', cursive;
   font-size: 6rem;
   padding-top: 3rem;

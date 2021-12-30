@@ -28,14 +28,14 @@ const MiniCartContainer = styled.div`
 `
 const TitleContainer = styled.div`
   display: flex;
-  height: 6rem;
+  height: 8rem;
   box-shadow: 0 0 10px 0px rgba(0, 0, 0, 0.3);
 `
 
 const TitleDiv = styled.div`
  height: 100%;
   width: 70%;
-  font-size: 2rem;
+  font-size: 1.6rem;
   color: #333;
   display: flex;
   margin: auto;
@@ -72,7 +72,7 @@ const CartItems = styled.div`
     background-color: #eee;
   }
   &::-webkit-scrollbar-thumb {
-    background-color: yellowgreen;
+    background-color: ${props => props.theme.highlightColor};
     border-radius: 10px;
   }
 `
@@ -99,7 +99,7 @@ const PurchaseButton = styled(Link)`
   color: #222;
   font-size: 1.6rem;
   font-weight: 700;
-  background-color: yellowgreen;
+  background-color: ${props => props.theme.highlightColor};
   padding: 1.5rem 4rem;
   margin: 1rem auto;
   border-radius: 10px;
@@ -107,7 +107,7 @@ const PurchaseButton = styled(Link)`
 
   &:hover {
     background: #222;
-    color: yellowgreen;
+    color: ${props => props.theme.highlightColor};
     /* box-shadow: 0 5px 10px 4px rgba(0,0,0,.3); */
     /* transform: translateY(-2px); */
   }

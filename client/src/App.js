@@ -1,14 +1,21 @@
 import React, {useState} from 'react';
 import {BrowserRouter as Router, Routes, Route} from "react-router-dom";
-import { createGlobalStyle } from 'styled-components';
 
-import Navbar from './components/Navbar';
+import { createGlobalStyle } from 'styled-components';
+import { ThemeProvider } from 'styled-components';
+
+// Pages
 import Home from './pages/Home';
 import About from './pages/About';
 import Portfolio from './components/Portfolio';
 import Contact from './pages/Contact';
 import Checkout from './pages/Checkout';
 import Art from './pages/Art';
+
+// Components
+import Navbar from './components/Navbar';
+import MiniCart from './components/MiniCart';
+import Footer from './components/Footer';
 
 // Sale Images
 import screamPic from './imgs/scream.jpg'
@@ -18,8 +25,9 @@ import frog from './imgs/frog.jpg'
 import paint from './imgs/paint.jpg'
 import paintbrushes from './imgs/paintbrushes.jpg'
 
+// Styles
+import {theme} from './StyledElements/themes'
 
-import MiniCart from './components/MiniCart';
 
 
 const exampleArt = [
@@ -103,7 +111,7 @@ function App() {
   }
 
   return (
-    <div>
+    <ThemeProvider theme={theme}>
       <GlobalStyle />
       <Router>
       <Navbar showMiniCart={showMiniCart} setMiniCart={setMiniCart} cart={cart} />
@@ -117,7 +125,8 @@ function App() {
           <Route path="/checkout" element={<Checkout />} />
         </Routes>
       </Router>
-    </div>
+      <Footer />
+    </ThemeProvider>
   )
 }
 

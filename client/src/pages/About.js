@@ -8,7 +8,7 @@ import { faInstagram, faSoundcloud } from '@fortawesome/free-brands-svg-icons';
 
 
 const AboutHeading = styled.h1`
-  color: yellowgreen;
+  color: ${props => props.theme.highlightColor};
   font-family: 'Rock 3D', cursive;
   font-size: 6rem;
   padding-top: 3rem;
@@ -26,12 +26,12 @@ const AboutContainer = styled.div`
 
 const SocialLinksDiv = styled.div`
   font-size: 3rem;
-  color: yellowgreen;
+  color: ${props => props.theme.highlightColor};
   padding-bottom: 4rem;
 `
 
 const SocialLink = styled.a`
-  color: yellowgreen;
+  color: ${props => props.theme.highlightColor};
   margin: 0 2rem;
 `
 

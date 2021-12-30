@@ -4,7 +4,7 @@ import { TextDiv, PageDiv } from '../StyledElements/divs';
 
 
 const ContactHeading = styled.h1`
-  color: yellowgreen;
+  color: ${props => props.theme.highlightColor};
   font-family: 'Rock 3D', cursive;
   font-size: 6rem;
   padding-top: 3rem;
