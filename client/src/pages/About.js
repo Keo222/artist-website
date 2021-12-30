@@ -3,6 +3,10 @@ import styled from 'styled-components';
 import { TextDiv, PageDiv } from '../StyledElements/divs';
 
 
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faInstagram, faSoundcloud } from '@fortawesome/free-brands-svg-icons';
+
+
 const AboutHeading = styled.h1`
   color: yellowgreen;
   font-family: 'Rock 3D', cursive;
@@ -17,7 +21,18 @@ const AboutText = styled.p`
 const AboutContainer = styled.div`
   width: 60%;
   margin: 0 auto;
-  padding-bottom: 5rem;
+  padding-bottom: 2rem;
+`
+
+const SocialLinksDiv = styled.div`
+  font-size: 3rem;
+  color: yellowgreen;
+  padding-bottom: 4rem;
+`
+
+const SocialLink = styled.a`
+  color: yellowgreen;
+  margin: 0 2rem;
 `
 
 function About() {
@@ -30,6 +45,14 @@ function About() {
           Frankie Winterbourne is an artist residing in Portland, OR. They primarily focus on screenprinting, but also enjoy ceramics, making stickers, and crying while pooping. Frankie really needs to send me a bio soon so I can complete this part. Here is some filler text that only Dryden can read: Lorem ipsum, dolor sit amet consectetur adipisicing elit. Repudiandae ut accusantium officia iure? Corrupti autem doloremque, voluptate sed quod deserunt veritatis assumenda? Laboriosam ad, nemo illo ipsa sint ea porro cumque consequuntur et, rerum officia iste odio magni omnis unde recusandae culpa ducimus, minima maxime. Harum, molestias. Molestiae, autem. Soluta, maiores architecto iure quam obcaecati adipisci quis impedit vitae pariatur quo harum vel consectetur suscipit, id reiciendis, dolores nostrum corporis voluptas quidem voluptatem atque accusamus ipsum nihil hic. Illo ipsam voluptatum eligendi saepe harum ab doloremque eos consequuntur. Tempora, facilis.
         </AboutText>
       </AboutContainer>
+      <SocialLinksDiv>
+        <SocialLink href="https://www.instagram.com/frank_winterbourne/" target="_blank">
+          <FontAwesomeIcon icon={faInstagram} />
+        </SocialLink>
+        <SocialLink href="https://soundcloud.com/frank-winterbourne" target="_blank">
+          <FontAwesomeIcon icon={faSoundcloud} />
+        </SocialLink>
+      </SocialLinksDiv>
     </TextDiv>
     </PageDiv>
   )

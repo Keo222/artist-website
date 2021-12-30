@@ -57,7 +57,7 @@ const AddedToCartButton = styled.div`
   font-weight: 700;
   border-radius: 20px;
   color: #222;
-  background: lightblue;
+  background: #bbb;
   text-align: center;
   vertical-align: middle;
   line-height: 5rem;

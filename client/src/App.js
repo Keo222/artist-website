@@ -14,6 +14,9 @@ import Art from './pages/Art';
 import screamPic from './imgs/scream.jpg'
 import monaLisaPic from './imgs/monaLisa.jpg'
 import watermelonPic from './imgs/watermelon.jpg'
+import frog from './imgs/frog.jpg'
+import paint from './imgs/paint.jpg'
+import paintbrushes from './imgs/paintbrushes.jpg'
 
 
 import MiniCart from './components/MiniCart';
@@ -40,7 +43,28 @@ const exampleArt = [
     id: "wamel",
     price: 30,
     img: watermelonPic
-  }
+  },
+  {
+    name: "Frog",
+    desc: "frog description",
+    id: "frog",
+    price: 70,
+    img: frog
+  },
+  {
+    name: "Paint Brushes",
+    desc: "Paint Brushes description",
+    id: "pbrush",
+    price: 20,
+    img: paintbrushes
+  },
+  {
+    name: "Paint",
+    desc: "paint description",
+    id: "paint",
+    price: 60,
+    img: paint
+  },
 ]
 
 
