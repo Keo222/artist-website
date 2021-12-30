@@ -11,5 +11,5 @@ box-shadow: 0 10px 10px 10px rgba(0,0,0,.3);
 `
 
 export const PageDiv = styled.div`
-  margin-top: 15rem;
+  margin: 15rem 0 10rem 0;
 `
