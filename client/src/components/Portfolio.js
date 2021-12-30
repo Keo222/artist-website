@@ -1,10 +1,11 @@
-import React from 'react'
+import React from 'react';
+import { PageDiv } from '../StyledElements/divs';
 
 function Portfolio() {
   return (
-    <div>
+    <PageDiv>
       <h1>Portfolio</h1>
-    </div>
+    </PageDiv>
   )
 }
 

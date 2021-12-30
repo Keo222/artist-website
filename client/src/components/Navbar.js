@@ -8,9 +8,13 @@ import { faShoppingCart } from '@fortawesome/free-solid-svg-icons'
 const Nav = styled.nav `
   background: #444;
   height: 10rem;
+  position: fixed;
+  top: 0;
+  width: 100%;
   display: flex;
   box-shadow: 0px 8px 16px 8px rgba(0,0,0,0.22);
   text-align: center;
+  z-index: 10;
 `
 
 const LogoDiv = styled.div`
@@ -68,12 +72,25 @@ const LinkBtn = styled(Link)`
   margin: auto 3rem;
   transition: all .4s;
   border-radius: 9px;
+
+  &:after {
+    display: block;
+    content: '';
+    border-bottom: solid 3px yellowgreen;
+    transform: scaleX(0);
+    transition: transform .25s ease-in-out;
+    border-radius: 20px;
+  }
   
-  &:hover {
+  &:hover:after {
+    transform: scaleX(1);
+  }
+
+  /* &:hover {
     transform: translateY(-2px);
     box-shadow: 0px 10px 20px 10px rgba(0,0,0, 0.19);
     background: #777;
-  }
+  } */
 `
 
 function Navbar({showMiniCart, setMiniCart, cart}) {

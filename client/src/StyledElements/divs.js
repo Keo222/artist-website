@@ -9,3 +9,7 @@ margin-top: 10rem;
 text-align: center;
 box-shadow: 0 10px 10px 10px rgba(0,0,0,.3);
 `
+
+export const PageDiv = styled.div`
+  margin-top: 15rem;
+`

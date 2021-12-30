@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 
 import styled from 'styled-components';
 
@@ -51,6 +51,19 @@ const AddToCartButton = styled.div`
     /* transform: translateY(-2px); */
   }
 `
+const AddedToCartButton = styled.div`
+  width: 15rem;
+  height: 5rem;
+  font-weight: 700;
+  border-radius: 20px;
+  color: #222;
+  background: lightblue;
+  text-align: center;
+  vertical-align: middle;
+  line-height: 5rem;
+  margin: 0 auto;
+  cursor: pointer;
+`
 
 const PartialHR = styled.hr`
   width: 80%;
@@ -68,6 +81,20 @@ const ArtImg = styled.img`
 `
 
 function ArtSaleItem({name, desc, price, pic, id, setAddCartButton}) {
+  const [loading, setLoading] = useState(false);
+
+  const loadingClick = () => {
+    console.log("poop")
+    setAddCartButton(id)
+
+    console.log(loading)
+    setLoading(true);
+    console.log(loading)
+    setTimeout(() => setLoading(false), 700);
+    // setTimeout(setLoading(prevLoading => !prevLoading), 5000);
+    // console.log(loading)
+  }
+
   return (
     <SaleDiv>
       <SaleInfoDiv>
@@ -75,7 +102,11 @@ function ArtSaleItem({name, desc, price, pic, id, setAddCartButton}) {
         <p>{desc}</p>
         <PartialHR />
         <Price>${price}</Price>
-        <AddToCartButton onClick={() => setAddCartButton(id)}>Add to Cart</AddToCartButton>
+        {loading ? 
+          <AddedToCartButton>Added to Cart...</AddedToCartButton>
+        :
+          <AddToCartButton onClick={() => loadingClick()}>Add to Cart</AddToCartButton>
+        }
       </SaleInfoDiv>
       <ImgDiv>
         <ArtImg src={pic}/>

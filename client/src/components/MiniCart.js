@@ -10,7 +10,7 @@ import MiniCartItem from './MiniCartItem';
 
 const MiniCartContainer = styled.div`
   z-index: 10;
-  position: absolute;
+  position: fixed;
   top: 10rem;
   right: 0;
   min-width: 20rem;
@@ -19,8 +19,8 @@ const MiniCartContainer = styled.div`
   background: #ddd;
   border-radius: 0 0 0 10px;
   box-shadow: 0 10px 10px 10px rgba(0, 0, 0, 0.3);
-  display: ${props => props.visible ? 'flex' : 'none'} ;
-  transform: translateY(-100rem);
+  display: ${props => props.visible ? 'flex' : 'none'};
+  /* transform: translateY(-100rem); */
   flex-direction: column;
   transition: all .8s;
 `
@@ -140,10 +140,10 @@ const PurchaseButton = styled(Link)`
   }
 `
 
-function MiniCart({showMiniCart, setMiniCart, art, cart, setCart}) {
+function MiniCart({showMiniCart, setMiniCart, art, cart, setCart, setCartSelect}) {
   const cartItemCards = cart.map(c => {
     const item = art.find(i => i.id === c.id);
-    return (<MiniCartItem key={uuid()} name={item.name} price={item.price} id={item.id} cart={cart} setCart={setCart} qty={c.amt} />)
+    return (<MiniCartItem key={uuid()} name={item.name} price={item.price} id={item.id} cart={cart} setCart={setCart} qty={c.amt} setCartSelect={setCartSelect} art={item.img}/>)
   })
 
   const findTotal = () => {
@@ -151,8 +151,6 @@ function MiniCart({showMiniCart, setMiniCart, art, cart, setCart}) {
     if (cart.length > 0) {
       for (let i = 0; i < cart.length; i++) {
         const idx = art.findIndex(a => a.id === cart[i].id)
-        console.log(cart[i].amt)
-        console.log(art[idx].price)
         total += art[idx].price * cart[i].amt
       }
     }

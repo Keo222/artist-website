@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import { TextDiv } from '../StyledElements/divs';
+import { TextDiv, PageDiv } from '../StyledElements/divs';
 
 const HomeHeading = styled.h1`
   color: yellowgreen;
@@ -21,7 +21,7 @@ const HomeContainer = styled.div`
 
 function Home() {
   return (
-    <>
+    <PageDiv>
     <TextDiv>
       <HomeHeading>TEMPORARY HOME</HomeHeading>
       <HomeContainer>
@@ -30,7 +30,7 @@ function Home() {
         </HomeText>
       </HomeContainer>
     </TextDiv>
-    </>
+    </PageDiv>
   )
 }
 

@@ -1,15 +1,31 @@
 import React from 'react'
 import styled from 'styled-components';
 
-const CenteringDiv = styled.div`
+import CartItem from './CartItem';
+
+const TextCenteringDiv = styled.div`
   text-align: center;
+`
+const ShoppingCartDiv = styled.div`
+  width: 90%;
+  margin: 0 auto;
+`
+
+const CartTitle = styled.div`
+  font-size: 3rem;
+  font-weight: 700;
 `
 
 function ShoppingCart() {
   return (
-    <CenteringDiv>
-      <h2>SHOPPING CART</h2>
-    </CenteringDiv>
+    <ShoppingCartDiv>
+      <TextCenteringDiv>
+        <CartTitle>CART ITEMS:</CartTitle>
+      </TextCenteringDiv>
+      <div>
+        <CartItem />
+      </div>
+    </ShoppingCartDiv>
   )
 }
 

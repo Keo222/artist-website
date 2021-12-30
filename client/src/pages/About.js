@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import { TextDiv } from '../StyledElements/divs';
+import { TextDiv, PageDiv } from '../StyledElements/divs';
 
 
 const AboutHeading = styled.h1`
@@ -22,6 +22,7 @@ const AboutContainer = styled.div`
 
 function About() {
   return (
+    <PageDiv>
     <TextDiv>
       <AboutHeading>ABOUT</AboutHeading>
       <AboutContainer>
@@ -30,6 +31,7 @@ function About() {
         </AboutText>
       </AboutContainer>
     </TextDiv>
+    </PageDiv>
   )
 }
 

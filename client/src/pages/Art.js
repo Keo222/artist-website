@@ -1,9 +1,13 @@
 import React from 'react';
 import styled from 'styled-components';
 
-import ArtSaleItem from './ArtSaleItem';
+import ArtSaleItem from '../components/ArtSaleItem';
 
-import { TextDiv } from '../StyledElements/divs';
+import { TextDiv, PageDiv } from '../StyledElements/divs';
+
+const StoreDiv = styled(PageDiv)`
+  margin-top: 10rem;
+`
 
 const AboutDiv = styled.div`
   display: flex;
@@ -33,7 +37,7 @@ const AboutText = styled.p`
 // SALE ITEMS
 const SaleItems = styled.div`
   width: 60%;
-  margin-top: 5rem;
+  margin-top: 15rem;
 `
 
 // PRINT CART STATE
@@ -44,6 +48,7 @@ function Art({art, cart, setAddCartButton}) {
     )
 
   return (
+    <StoreDiv>
     <AboutDiv>
     <LeftInfoDiv>
       <TextDiv>
@@ -59,6 +64,7 @@ function Art({art, cart, setAddCartButton}) {
         {artListings}
       </SaleItems>
     </AboutDiv>
+    </StoreDiv>
   )
 }
 

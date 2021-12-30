@@ -3,12 +3,14 @@ import {BrowserRouter as Router, Routes, Route} from "react-router-dom";
 import { createGlobalStyle } from 'styled-components';
 
 import Navbar from './components/Navbar';
-import Home from './components/Home';
-import About from './components/About';
+import Home from './pages/Home';
+import About from './pages/About';
 import Portfolio from './components/Portfolio';
-import Contact from './components/Contact';
-import Checkout from './components/Checkout';
-import Art from './components/Art';
+import Contact from './pages/Contact';
+import Checkout from './pages/Checkout';
+import Art from './pages/Art';
+
+// Sale Images
 import screamPic from './imgs/scream.jpg'
 import monaLisaPic from './imgs/monaLisa.jpg'
 import watermelonPic from './imgs/watermelon.jpg'
@@ -50,9 +52,9 @@ const GlobalStyle = createGlobalStyle`
 
 function App() {
   const [showMiniCart, setMiniCart] = useState(false);
-  const [cart, setCart] = useState([])
+  const [cart, setCart] = useState([]);
 
-  const setAddCartButton = async (item) => {
+  const setAddCartButton = (item) => {
     let updatedCart
     const included = cart.some(i => i.id === item)
     if (!included) {
@@ -64,12 +66,24 @@ function App() {
     }
     setCart(updatedCart)
   }
+
+  const setCartSelect = (newId, newAmt) => {
+    const updatedCart = [...cart];
+    const itemIndex = cart.findIndex(i => i.id === newId)
+    if (itemIndex === -1){
+      console.log("Did not find cart item")
+    } else {
+      updatedCart[itemIndex].amt = newAmt
+      setCart(updatedCart)
+    }
+  }
+
   return (
     <div>
       <GlobalStyle />
       <Router>
       <Navbar showMiniCart={showMiniCart} setMiniCart={setMiniCart} cart={cart} />
-      <MiniCart showMiniCart={showMiniCart} setMiniCart={setMiniCart} art={exampleArt} cart={cart} setCart={setCart} />
+      <MiniCart showMiniCart={showMiniCart} setMiniCart={setMiniCart} art={exampleArt} cart={cart} setCart={setCart} setCartSelect={setCartSelect} />
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/art" element={<Art art={exampleArt} cart={cart} setAddCartButton={setAddCartButton} />} />
