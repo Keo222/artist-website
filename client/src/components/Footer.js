@@ -14,6 +14,10 @@ const FooterDiv = styled.div`
   background: #333;
   color: #eee;
   bottom: 0;
+
+  @media screen and (max-width: 600px){
+    display: none;
+  }
 `
 
 const TextDiv = styled.div`
