@@ -62,7 +62,7 @@ const CloseButton = styled.div`
 
 const CartItems = styled.div`
   flex-grow: 1;
-  min-height: 40rem;
+  min-height: 40%;
   overflow-y: scroll;
   padding-bottom: 3rem;
   &::-webkit-scrollbar {
