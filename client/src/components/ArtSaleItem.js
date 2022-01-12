@@ -16,6 +16,7 @@ const SaleInfoDiv = styled.div`
   font-size: 1.6rem;
   text-align: center;
   color: #222;
+  margin-right: 5rem;
 `
 
 const ArtTitle = styled.h4`
