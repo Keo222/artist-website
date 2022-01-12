@@ -92,6 +92,9 @@ const StyledSelect = styled.select`
   width: 4rem;
   margin-left: 1rem;
   font-size: 1.6rem;
+  @media screen and (${(props) => props.theme.md}) {
+    width: 6rem;
+  }
 `;
 
 function MiniCartItem({

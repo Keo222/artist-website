@@ -49,18 +49,21 @@ const Bars = styled.div`
 `;
 
 const DropdownNav = styled.div`
-  display: ${(props) => (props.showDropdown ? "flex" : "none")};
-  flex-direction: column;
-  position: absolute;
-  top: 10rem;
-  width: 100vw;
-  height: calc(50vh - 10rem);
-  background: #777;
-  text-align: center;
-  transition: transform 0.6s;
-  transform: translateY(-90vh);
-  transform: ${(props) =>
-    props.showDropdown ? "translateY(0)" : "translateY(-90vh)"};
+  display: none;
+  @media screen and (${(props) => props.theme.sm}) {
+    display: ${(props) => (props.showDropdown ? "flex" : "none")};
+    flex-direction: column;
+    position: absolute;
+    top: 10rem;
+    width: 100vw;
+    height: calc(50vh - 10rem);
+    background: #777;
+    text-align: center;
+    transition: transform 0.6s;
+    transform: translateY(-90vh);
+    transform: ${(props) =>
+      props.showDropdown ? "translateY(0)" : "translateY(-90vh)"};
+  }
 `;
 
 const NavLinks = styled.div`
@@ -165,10 +168,18 @@ function Navbar({
         </Bars>
       </Nav>
       <DropdownNav showDropdown={showDropdown}>
-        <LinkBtn to="/art">Store</LinkBtn>
-        <LinkBtn to="/portfolio">Portfolio</LinkBtn>
-        <LinkBtn to="/about">About</LinkBtn>
-        <LinkBtn to="/contact">Commissions</LinkBtn>
+        <LinkBtn to="/art" onClick={() => dropdown()}>
+          Store
+        </LinkBtn>
+        <LinkBtn to="/portfolio" onClick={() => dropdown()}>
+          Portfolio
+        </LinkBtn>
+        <LinkBtn to="/about" onClick={() => dropdown()}>
+          About
+        </LinkBtn>
+        <LinkBtn to="/contact" onClick={() => dropdown()}>
+          Commissions
+        </LinkBtn>
       </DropdownNav>
     </>
   );
