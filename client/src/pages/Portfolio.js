@@ -21,11 +21,12 @@ import art13 from "../imgs/portfolio/art13.jpg";
 import art14 from "../imgs/portfolio/art14.jpg";
 
 const CenteringDiv = styled.div`
-  width: 50%;
-  background: #333;
+  width: 80%;
+  background: #444;
   text-align: center;
   margin: 0 auto;
   border-radius: 10px;
+  box-shadow: 0 10px 10px 10px rgba(0, 0, 0, 0.3);
 `;
 
 const PortfolioHeading = styled(Heading)`
@@ -38,6 +39,9 @@ const BigDivGrid = styled.div`
   grid-template-columns: 1fr 1fr 1fr;
   grid-gap: 1rem;
   margin: 0 auto;
+  @media screen and (${(props) => props.theme.sm}) {
+    display: none;
+  }
 `;
 
 const SingleColumn = styled.div``;
@@ -48,6 +52,15 @@ const ImgDiv = styled.div`
 
 const Img = styled.img`
   width: 100%;
+`;
+
+const OneColumnDisplay = styled.div`
+  display: none;
+  width: 90%;
+  margin: 0 auto;
+  @media screen and (${(props) => props.theme.sm}) {
+    display: block;
+  }
 `;
 
 function Portfolio() {
@@ -100,6 +113,13 @@ function Portfolio() {
           ))}
         </SingleColumn>
       </BigDivGrid>
+      <OneColumnDisplay>
+        {images.map((i) => (
+          <ImgDiv>
+            <Img src={i} />
+          </ImgDiv>
+        ))}
+      </OneColumnDisplay>
     </PageDiv>
   );
 }

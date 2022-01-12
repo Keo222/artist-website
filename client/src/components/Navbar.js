@@ -57,7 +57,7 @@ const DropdownNav = styled.div`
     display: ${(props) => (props.showDropdown ? "flex" : "none")};
     flex-direction: column;
     position: fixed;
-    z-index: 1000;
+    z-index: 9;
     top: 10rem;
     width: 100vw;
     height: calc(50vh - 10rem);
