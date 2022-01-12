@@ -27,7 +27,7 @@ const MiniCartContainer = styled.div`
   flex-direction: column;
   transition: all 0.8s;
   justify-content: space-between;
-  @media screen and (${(props) => props.theme.md}) {
+  @media screen and (${(props) => props.theme.lg}) {
     width: 50%;
   }
   @media screen and (${(props) => props.theme.sm}) {
@@ -75,6 +75,13 @@ const CloseIconContainer = styled.div`
 
 const CloseButton = styled.div`
   cursor: pointer;
+`;
+
+const EmptyCartDiv = styled.div`
+  font-size: 1.6rem;
+  margin: 2rem auto;
+  width: 85%;
+  text-align: center;
 `;
 
 const CartItems = styled.div`
@@ -185,7 +192,13 @@ function MiniCart({
         </CloseIconContainer>
       </TitleContainer>
       {/* CART ITEMS */}
-      <CartItems>{cartItemCards}</CartItems>
+      {cart.length > 0 ? (
+        <CartItems>{cartItemCards}</CartItems>
+      ) : (
+        <EmptyCartDiv>
+          <p>You don't have any items in your cart yet!</p>
+        </EmptyCartDiv>
+      )}
 
       {/* PURCHASE BUTTON TO GO TO CHECKOUT PAGE */}
       <ButtonContainer>

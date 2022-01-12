@@ -108,13 +108,9 @@ function MiniCartItem({
   art,
 }) {
   const deleteItem = (item) => {
-    console.log(cart);
-    console.log(item);
     const idx = cart.findIndex((i) => i.id === item);
-    console.log(idx);
     const cartCopy = [...cart];
     cartCopy.splice(idx, 1);
-    console.log(cartCopy);
     setCart(cartCopy);
   };
   return (

@@ -31,6 +31,9 @@ const Logo = styled.h3`
   font-size: 5rem;
   color: ${(props) => props.theme.highlightColor};
   margin: 1rem auto;
+  @media screen and (${(props) => props.theme.sm}) {
+    margin-left: 2rem;
+  }
 `;
 
 const Bars = styled.div`
@@ -53,12 +56,14 @@ const DropdownNav = styled.div`
   @media screen and (${(props) => props.theme.sm}) {
     display: ${(props) => (props.showDropdown ? "flex" : "none")};
     flex-direction: column;
-    position: absolute;
+    position: fixed;
+    z-index: 1000;
     top: 10rem;
     width: 100vw;
     height: calc(50vh - 10rem);
     background: #777;
     text-align: center;
+    border-radius: 0 0 5px 5px;
     transition: transform 0.6s;
     transform: translateY(-90vh);
     transform: ${(props) =>
@@ -136,6 +141,38 @@ const LinkBtn = styled(Link)`
     background: #777;
   } */
 `;
+const DropdownLinkBtn = styled(Link)`
+  font-size: 1.6rem;
+  padding: 1.3rem 2.5rem;
+  color: white;
+  text-decoration: none;
+  margin: auto 3rem;
+  transition: all 0.4s;
+  border-radius: 9px;
+
+  &:after {
+    display: block;
+    content: "";
+    border-bottom: solid 3px ${(props) => props.theme.highlightColor};
+    transform: scaleX(0);
+    transition: transform 0.25s ease-in-out;
+    border-radius: 20px;
+  }
+
+  &:hover:after {
+    transform: scaleX(1);
+  }
+
+  @media screen and (${(props) => props.theme.sm}) {
+    margin: auto 40vw;
+  }
+
+  /* &:hover {
+    transform: translateY(-2px);
+    box-shadow: 0px 10px 20px 10px rgba(0,0,0, 0.19);
+    background: #777;
+  } */
+`;
 
 function Navbar({
   showMiniCart,
@@ -168,18 +205,18 @@ function Navbar({
         </Bars>
       </Nav>
       <DropdownNav showDropdown={showDropdown}>
-        <LinkBtn to="/art" onClick={() => dropdown()}>
+        <DropdownLinkBtn to="/art" onClick={() => dropdown()}>
           Store
-        </LinkBtn>
-        <LinkBtn to="/portfolio" onClick={() => dropdown()}>
+        </DropdownLinkBtn>
+        <DropdownLinkBtn to="/portfolio" onClick={() => dropdown()}>
           Portfolio
-        </LinkBtn>
-        <LinkBtn to="/about" onClick={() => dropdown()}>
+        </DropdownLinkBtn>
+        <DropdownLinkBtn to="/about" onClick={() => dropdown()}>
           About
-        </LinkBtn>
-        <LinkBtn to="/contact" onClick={() => dropdown()}>
+        </DropdownLinkBtn>
+        <DropdownLinkBtn to="/contact" onClick={() => dropdown()}>
           Commissions
-        </LinkBtn>
+        </DropdownLinkBtn>
       </DropdownNav>
     </>
   );

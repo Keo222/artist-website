@@ -31,33 +31,52 @@ const ContactFormDiv = styled.div`
 const ContactForm = styled.form`
   display: flex;
   justify-content: space-evenly;
+  @media screen and (${(props) => props.theme.sm}) {
+    flex-direction: column;
+  }
+`;
+
+const InputGrouping = styled.div`
+  display: flex;
+  margin: 0 2rem;
+  @media screen and (${(props) => props.theme.sm}) {
+    margin: 2rem 0;
+  }
 `;
 
 const ContactLabel = styled.label`
   font-size: 1.6rem;
   margin-right: 1rem;
+  line-height: 2.5rem;
 `;
 const ContactInput = styled.input`
   height: 2rem;
 `;
 const ContactSelect = styled.select`
-  height: 2rem;
+  font-size: 1.4rem;
+  height: 2.5rem;
 `;
 const ContactTextArea = styled.textarea`
   margin: 3rem auto 0;
-  width: 65%;
+  width: 100%;
   height: 20rem;
 `;
 
 const ContactButton = styled.button`
   margin: 2rem auto 0;
-  padding: 1rem 2rem;
+  padding: 1.2rem 4rem;
   cursor: pointer;
-  background: #333;
-  color: ${(props) => props.theme.highlightColor};
+  background: ${(props) => props.theme.highlightColor};
+  color: #222;
   border: none;
   border-radius: 6px;
   font-size: 1.6rem;
+  font-weight: 700;
+  transition: all 0.2s;
+  &:hover {
+    background: #222;
+    color: ${(props) => props.theme.highlightColor};
+  }
 `;
 
 function Contact() {
@@ -85,15 +104,15 @@ function Contact() {
       </TextDiv>
       <ContactFormDiv>
         <ContactForm>
-          <div>
+          <InputGrouping>
             <ContactLabel htmlFor="name">Name:</ContactLabel>
             <ContactInput type="text" name="name" id="name" />
-          </div>
-          <div>
+          </InputGrouping>
+          <InputGrouping>
             <ContactLabel htmlFor="email">Email:</ContactLabel>
             <ContactInput type="email" name="email" id="email" />
-          </div>
-          <div>
+          </InputGrouping>
+          <InputGrouping>
             <ContactLabel htmlFor="pronouns">Pronouns:</ContactLabel>
             <ContactSelect type="option" name="pronouns" id="pronouns">
               <option value="they/them">they/them</option>
@@ -101,7 +120,7 @@ function Contact() {
               <option value="he/him">he/him</option>
               <option value="other">other (specify in message)</option>
             </ContactSelect>
-          </div>
+          </InputGrouping>
         </ContactForm>
         <ContactTextArea
           name="message"

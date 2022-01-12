@@ -16,3 +16,9 @@ export const TextDiv = styled.div`
 export const PageDiv = styled.div`
   margin: 15rem 0 10rem 0;
 `;
+
+export const ScrollToggleDiv = styled.div`
+  @media screen and (${(props) => props.theme.sm}) {
+    overflow: ${(props) => (props.showMiniCart ? "hidden" : "initial")};
+  }
+`;

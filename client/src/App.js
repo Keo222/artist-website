@@ -7,7 +7,7 @@ import { ThemeProvider } from "styled-components";
 // Pages
 import Home from "./pages/Home";
 import About from "./pages/About";
-import Portfolio from "./components/Portfolio";
+import Portfolio from "./pages/Portfolio";
 import Contact from "./pages/Contact";
 import Checkout from "./pages/Checkout";
 import Art from "./pages/Art";
@@ -27,6 +27,7 @@ import paintbrushes from "./imgs/paintbrushes.jpg";
 
 // Styles
 import { theme } from "./StyledElements/themes";
+import { ScrollToggleDiv } from "./StyledElements/divs";
 
 const exampleArt = [
   {
@@ -113,41 +114,43 @@ function App() {
   return (
     <ThemeProvider theme={theme}>
       <GlobalStyle />
-      <Router>
-        <Navbar
-          showMiniCart={showMiniCart}
-          setMiniCart={setMiniCart}
-          cart={cart}
-          dropdown={dropdown}
-          showDropdown={showDropdown}
-        />
-        <MiniCart
-          showMiniCart={showMiniCart}
-          setMiniCart={setMiniCart}
-          art={exampleArt}
-          cart={cart}
-          setCart={setCart}
-          setCartSelect={setCartSelect}
-        />
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route
-            path="/art"
-            element={
-              <Art
-                art={exampleArt}
-                cart={cart}
-                setAddCartButton={setAddCartButton}
-              />
-            }
+      <ScrollToggleDiv showMiniCart={showMiniCart}>
+        <Router>
+          <Navbar
+            showMiniCart={showMiniCart}
+            setMiniCart={setMiniCart}
+            cart={cart}
+            dropdown={dropdown}
+            showDropdown={showDropdown}
           />
-          <Route path="/about" element={<About />} />
-          <Route path="/portfolio" element={<Portfolio />} />
-          <Route path="/contact" element={<Contact />} />
-          <Route path="/checkout" element={<Checkout />} />
-        </Routes>
-      </Router>
-      <Footer />
+          <MiniCart
+            showMiniCart={showMiniCart}
+            setMiniCart={setMiniCart}
+            art={exampleArt}
+            cart={cart}
+            setCart={setCart}
+            setCartSelect={setCartSelect}
+          />
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route
+              path="/art"
+              element={
+                <Art
+                  art={exampleArt}
+                  cart={cart}
+                  setAddCartButton={setAddCartButton}
+                />
+              }
+            />
+            <Route path="/about" element={<About />} />
+            <Route path="/portfolio" element={<Portfolio />} />
+            <Route path="/contact" element={<Contact />} />
+            <Route path="/checkout" element={<Checkout />} />
+          </Routes>
+        </Router>
+        <Footer />
+      </ScrollToggleDiv>
     </ThemeProvider>
   );
 }
