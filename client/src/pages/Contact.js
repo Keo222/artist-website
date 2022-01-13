@@ -46,6 +46,8 @@ const InputGrouping = styled.div`
   margin: 0 2rem;
   @media screen and (${(props) => props.theme.md}) {
     margin: 2rem 0;
+    flex-direction: column;
+    text-align: initial;
   }
 `;
 
@@ -58,10 +60,14 @@ const ContactLabel = styled.label`
 `;
 const ContactInput = styled.input`
   height: 2rem;
+  max-width: 30ch;
 `;
 const ContactSelect = styled.select`
   font-size: 1.4rem;
   height: 2.5rem;
+  @media screen and (${(props) => props.theme.md}) {
+    width: 25ch;
+  }
 `;
 const ContactTextArea = styled.textarea`
   margin: 3rem auto 0;
@@ -91,7 +97,7 @@ function Contact() {
   return (
     <PageDiv>
       <TextDiv>
-        <Heading>Temporary Contact</Heading>
+        <Heading>Contact</Heading>
         <ContactInfoContainer>
           <ContactText>
             Lorem ipsum dolor sit amet consectetur adipisicing elit. Modi
