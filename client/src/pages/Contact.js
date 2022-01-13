@@ -18,12 +18,17 @@ import { Heading, ParagraphText } from "../StyledElements/typography";
 const ContactInfoContainer = styled.div`
   width: 80%;
   margin: 0 auto;
-  padding-bottom: 5rem;
+  padding-bottom: 3rem;
+`;
+
+const ContactText = styled(ParagraphText)`
+  margin-bottom: 0;
 `;
 
 const ContactFormDiv = styled.div`
   width: 60%;
-  margin: 5rem auto;
+  margin: 0 auto;
+  padding: 3rem 0;
   display: flex;
   flex-direction: column;
 `;
@@ -31,7 +36,7 @@ const ContactFormDiv = styled.div`
 const ContactForm = styled.form`
   display: flex;
   justify-content: space-evenly;
-  @media screen and (${(props) => props.theme.sm}) {
+  @media screen and (${(props) => props.theme.md}) {
     flex-direction: column;
   }
 `;
@@ -39,15 +44,17 @@ const ContactForm = styled.form`
 const InputGrouping = styled.div`
   display: flex;
   margin: 0 2rem;
-  @media screen and (${(props) => props.theme.sm}) {
+  @media screen and (${(props) => props.theme.md}) {
     margin: 2rem 0;
   }
 `;
 
 const ContactLabel = styled.label`
   font-size: 1.6rem;
+  font-weight: 700;
   margin-right: 1rem;
   line-height: 2.5rem;
+  color: ${(props) => props.theme.highlightColor};
 `;
 const ContactInput = styled.input`
   height: 2rem;
@@ -85,7 +92,7 @@ function Contact() {
       <TextDiv>
         <Heading>Temporary Contact</Heading>
         <ContactInfoContainer>
-          <ParagraphText>
+          <ContactText>
             Lorem ipsum dolor sit amet consectetur adipisicing elit. Modi
             esse accusamus nostrum! Enim fugiat, in quisquam nesciunt
             cumque totam qui aspernatur magnam, itaque vitae hic quaerat
@@ -99,38 +106,39 @@ function Contact() {
             quisquam corrupti aut deserunt facilis doloribus ea placeat,
             iusto accusamus inventore eligendi corporis eveniet ex?
             Excepturi, magnam delectus!
-          </ParagraphText>
+          </ContactText>
         </ContactInfoContainer>
+
+        <ContactFormDiv>
+          <ContactForm>
+            <InputGrouping>
+              <ContactLabel htmlFor="name">Name:</ContactLabel>
+              <ContactInput type="text" name="name" id="name" />
+            </InputGrouping>
+            <InputGrouping>
+              <ContactLabel htmlFor="email">Email:</ContactLabel>
+              <ContactInput type="email" name="email" id="email" />
+            </InputGrouping>
+            <InputGrouping>
+              <ContactLabel htmlFor="pronouns">Pronouns:</ContactLabel>
+              <ContactSelect type="option" name="pronouns" id="pronouns">
+                <option value="they/them">they/them</option>
+                <option value="she/her">she/her</option>
+                <option value="he/him">he/him</option>
+                <option value="other">other (specify in message)</option>
+              </ContactSelect>
+            </InputGrouping>
+          </ContactForm>
+          <ContactTextArea
+            name="message"
+            id="message"
+            cols="30"
+            rows="10"
+            placeholder="Your message..."
+          ></ContactTextArea>
+          <ContactButton>Submit</ContactButton>
+        </ContactFormDiv>
       </TextDiv>
-      <ContactFormDiv>
-        <ContactForm>
-          <InputGrouping>
-            <ContactLabel htmlFor="name">Name:</ContactLabel>
-            <ContactInput type="text" name="name" id="name" />
-          </InputGrouping>
-          <InputGrouping>
-            <ContactLabel htmlFor="email">Email:</ContactLabel>
-            <ContactInput type="email" name="email" id="email" />
-          </InputGrouping>
-          <InputGrouping>
-            <ContactLabel htmlFor="pronouns">Pronouns:</ContactLabel>
-            <ContactSelect type="option" name="pronouns" id="pronouns">
-              <option value="they/them">they/them</option>
-              <option value="she/her">she/her</option>
-              <option value="he/him">he/him</option>
-              <option value="other">other (specify in message)</option>
-            </ContactSelect>
-          </InputGrouping>
-        </ContactForm>
-        <ContactTextArea
-          name="message"
-          id="message"
-          cols="30"
-          rows="10"
-          placeholder="Your message..."
-        ></ContactTextArea>
-        <ContactButton>Submit</ContactButton>
-      </ContactFormDiv>
     </PageDiv>
   );
 }
