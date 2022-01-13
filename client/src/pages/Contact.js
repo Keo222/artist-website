@@ -67,6 +67,7 @@ const ContactTextArea = styled.textarea`
   margin: 3rem auto 0;
   width: 100%;
   height: 20rem;
+  font-family: inherit;
 `;
 
 const ContactButton = styled.button`
