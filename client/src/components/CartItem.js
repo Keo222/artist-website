@@ -5,13 +5,18 @@ const CartItemDiv = styled.div`
   background: #fff;
   border-radius: 30px;
   width: 70%;
-  height: 12rem;
+  height: 20rem;
   margin: 4rem auto;
   display: flex;
+  overflow: hidden;
 `;
 const CartImgDiv = styled.div`
-  width: 20%;
+  width: 30%;
   border-right: 1px solid black;
+`;
+const ArtImg = styled.img`
+  width: 100%;
+  height: 100%;
 `;
 
 // NAME IN CART
@@ -77,13 +82,15 @@ const BottomInnerText = styled.p`
   margin-bottom: 0;
 `;
 
-function CartItem() {
+function CartItem({ name, desc, id, price, img }) {
   return (
     <CartItemDiv>
-      <CartImgDiv></CartImgDiv>
+      <CartImgDiv>
+        <ArtImg src={img} />
+      </CartImgDiv>
       <CartNameDiv>
-        <ItemName>Item</ItemName>
-        <ItemDescription>Description</ItemDescription>
+        <ItemName>{name}</ItemName>
+        <ItemDescription>{desc}</ItemDescription>
       </CartNameDiv>
       <CartPriceDiv>
         <QtyDiv>
@@ -99,7 +106,7 @@ function CartItem() {
         </QtyDiv>
         <TotalAndRemoveDiv>
           <TotalDiv>
-            <TopInnerText>$40</TopInnerText>
+            <TopInnerText>${price}.00</TopInnerText>
           </TotalDiv>
           <RemoveDiv>
             <BottomInnerText>Remove</BottomInnerText>

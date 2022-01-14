@@ -1,19 +1,21 @@
-import React, {useState, useEffect} from 'react';
+import React, { useState, useEffect } from "react";
 import { loadStripe } from "@stripe/stripe-js";
 import { Elements } from "@stripe/react-stripe-js";
 
-import { PageDiv } from '../StyledElements/divs';
+import { PageDiv } from "../StyledElements/divs";
 
-import CheckoutForm from '../components/CheckoutForm';
-import ShoppingCart from '../components/ShoppingCart';
+import CheckoutForm from "../components/CheckoutForm";
+import ShoppingCart from "../components/ShoppingCart";
 
-const stripePromise = loadStripe("pk_test_51K9C9lG5ajwLNRwgE3wD7N3L8T8I3hXDl49wbxUYTRvbUB5rrRoXTWoXvLRwDy87V95zBsDR3d92OH92vCVVkKKJ00FY2vSMBc");
+const stripePromise = loadStripe(
+  "pk_test_51K9C9lG5ajwLNRwgE3wD7N3L8T8I3hXDl49wbxUYTRvbUB5rrRoXTWoXvLRwDy87V95zBsDR3d92OH92vCVVkKKJ00FY2vSMBc"
+);
 
-function Checkout() {
+function Checkout({ art, cart }) {
+  // START STRIPE
   const [clientSecret, setClientSecret] = useState("");
 
   useEffect(() => {
-    // Create PaymentIntent as soon as the page loads
     fetch("/create-payment-intent", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
@@ -24,23 +26,24 @@ function Checkout() {
   }, []);
 
   const appearance = {
-    theme: 'stripe',
+    theme: "stripe",
   };
   const options = {
     clientSecret,
     appearance,
   };
+  // END STRIPE
 
   return (
     <PageDiv>
-      <ShoppingCart />
+      <ShoppingCart art={art} cart={cart} />
       {clientSecret && (
         <Elements options={options} stripe={stripePromise}>
           <CheckoutForm />
         </Elements>
       )}
     </PageDiv>
-  )
+  );
 }
 
-export default Checkout
+export default Checkout;
