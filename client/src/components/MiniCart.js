@@ -2,7 +2,10 @@ import React, { useState } from "react";
 import styled from "styled-components";
 import { Link } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faShoppingCart, faTimes } from "@fortawesome/free-solid-svg-icons";
+import {
+  faShoppingCart,
+  faTimes,
+} from "@fortawesome/free-solid-svg-icons";
 
 import { v4 as uuid } from "uuid";
 
@@ -152,7 +155,7 @@ function MiniCart({
         id={item.id}
         cart={cart}
         setCart={setCart}
-        qty={c.amt}
+        qty={c.qty}
         setCartSelect={setCartSelect}
         art={item.img}
       />
@@ -164,7 +167,7 @@ function MiniCart({
     if (cart.length > 0) {
       for (let i = 0; i < cart.length; i++) {
         const idx = art.findIndex((a) => a.id === cart[i].id);
-        total += art[idx].price * cart[i].amt;
+        total += art[idx].price * cart[i].qty;
       }
     }
     return total;

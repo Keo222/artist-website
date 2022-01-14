@@ -91,22 +91,22 @@ function App() {
     let updatedCart;
     const included = cart.some((i) => i.id === item);
     if (!included) {
-      updatedCart = [...cart, { id: item, amt: 1 }];
+      updatedCart = [...cart, { id: item, qty: 1 }];
     } else {
       updatedCart = [...cart];
       const itemIndex = cart.findIndex((i) => i.id === item);
-      updatedCart[itemIndex].amt += 1;
+      updatedCart[itemIndex].qty += 1;
     }
     setCart(updatedCart);
   };
 
-  const setCartSelect = (newId, newAmt) => {
+  const setCartSelect = (newId, newQty) => {
     const updatedCart = [...cart];
     const itemIndex = cart.findIndex((i) => i.id === newId);
     if (itemIndex === -1) {
       console.log("Did not find cart item");
     } else {
-      updatedCart[itemIndex].amt = newAmt;
+      updatedCart[itemIndex].qty = newQty;
       setCart(updatedCart);
     }
   };
@@ -152,6 +152,7 @@ function App() {
                 <Checkout
                   art={exampleArt}
                   cart={cart}
+                  setCart={setCart}
                   setCartSelect={setCartSelect}
                 />
               }

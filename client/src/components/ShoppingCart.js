@@ -16,6 +16,13 @@ const CartTitle = styled.div`
   font-weight: 700;
 `;
 
+const EmptyCartTitle = styled.p`
+  display: block;
+  font-size: 3rem;
+  font-weight: 700;
+  margin: 20rem 0 10rem;
+`;
+
 const Total = styled.h5`
   text-align: center;
   font-size: 3rem;
@@ -26,7 +33,7 @@ const Total = styled.h5`
   }
 `;
 
-function ShoppingCart({ art, cart, setCartSelect }) {
+function ShoppingCart({ art, cart, setCartSelect, setCart }) {
   const cartItemCards = cart.map((c) => {
     const item = art.find((i) => i.id === c.id);
     return (
@@ -36,6 +43,9 @@ function ShoppingCart({ art, cart, setCartSelect }) {
         id={item.id}
         price={item.price}
         img={item.img}
+        qty={c.qty}
+        cart={cart}
+        setCart={setCart}
         setCartSelect={setCartSelect}
       />
     );
@@ -46,7 +56,7 @@ function ShoppingCart({ art, cart, setCartSelect }) {
     if (cart.length > 0) {
       for (let i = 0; i < cart.length; i++) {
         const idx = art.findIndex((a) => a.id === cart[i].id);
-        total += art[idx].price * cart[i].amt;
+        total += art[idx].price * cart[i].qty;
       }
     }
     return total;
@@ -56,7 +66,11 @@ function ShoppingCart({ art, cart, setCartSelect }) {
   return (
     <ShoppingCartDiv>
       <TextCenteringDiv>
-        <CartTitle>CART ITEMS:</CartTitle>
+        {cart.length > 0 ? (
+          <CartTitle>CART ITEMS:</CartTitle>
+        ) : (
+          <EmptyCartTitle>Your cart is empty...</EmptyCartTitle>
+        )}
       </TextCenteringDiv>
       <div>
         {cartItemCards}
@@ -77,9 +91,11 @@ function ShoppingCart({ art, cart, setCartSelect }) {
           img={a.name}
         /> */}
       </div>
-      <Total>
-        Total: <span>${total}.00</span>
-      </Total>
+      {total > 0 && (
+        <Total>
+          Total: <span>${total}.00</span>
+        </Total>
+      )}
     </ShoppingCartDiv>
   );
 }

@@ -167,8 +167,14 @@ const LinkPTag = styled.p`
   text-align: center;
 `;
 
-function Navbar({ showMiniCart, setMiniCart, cart, dropdown, showDropdown }) {
-  const totalItems = cart.reduce((sum, { amt }) => sum + amt, 0);
+function Navbar({
+  showMiniCart,
+  setMiniCart,
+  cart,
+  dropdown,
+  showDropdown,
+}) {
+  const totalItems = cart.reduce((sum, { qty }) => sum + qty, 0);
   return (
     <>
       <Nav>

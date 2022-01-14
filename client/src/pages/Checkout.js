@@ -11,7 +11,7 @@ const stripePromise = loadStripe(
   "pk_test_51K9C9lG5ajwLNRwgE3wD7N3L8T8I3hXDl49wbxUYTRvbUB5rrRoXTWoXvLRwDy87V95zBsDR3d92OH92vCVVkKKJ00FY2vSMBc"
 );
 
-function Checkout({ art, cart }) {
+function Checkout({ art, cart, setCart, setCartSelect }) {
   // START STRIPE
   const [clientSecret, setClientSecret] = useState("");
 
@@ -36,7 +36,12 @@ function Checkout({ art, cart }) {
 
   return (
     <PageDiv>
-      <ShoppingCart art={art} cart={cart} />
+      <ShoppingCart
+        art={art}
+        cart={cart}
+        setCart={setCart}
+        setCartSelect={setCartSelect}
+      />
       {clientSecret && (
         <Elements options={options} stripe={stripePromise}>
           <CheckoutForm />

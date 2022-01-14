@@ -1,17 +1,18 @@
-require('dotenv').config()
-const path = require('path');
+const dotenv = require("dotenv").config(); //not sure if const is necessary
 const express = require("express");
+const app = express();
+const cors = require("cors");
+const pool = require("./db");
+const path = require("path");
 
 const PORT = process.env.PORT || 3001;
 
-const app = express();
-
-const stripe = require("stripe")(process.env.SECRET_KEY)
+const stripe = require("stripe")(process.env.SECRET_KEY);
 
 app.use(express.static("public"));
 app.use(express.json());
 
-app.use(express.static(path.resolve(__dirname, '../client/build')));
+app.use(express.static(path.resolve(__dirname, "../client/build")));
 
 const calculateOrderAmount = (items) => {
   // Replace this constant with a calculation of the order's amount
@@ -38,14 +39,14 @@ app.post("/create-payment-intent", async (req, res) => {
 });
 
 // PRACTICE GET REQUEST
-app.get('/api', (req, res) => {
-  res.json({message: "Hello from server!!!"})
-})
+app.get("/api", (req, res) => {
+  res.json({ message: "Hello from server!!!" });
+});
 
-app.get('*', (req, res) => {
-  res.sendFile(path.resolve(__dirname, '../client/build', 'index.html'));
-})
+app.get("*", (req, res) => {
+  res.sendFile(path.resolve(__dirname, "../client/build", "index.html"));
+});
 
 app.listen(PORT, () => {
-  console.log(`Server listening on ${PORT}`)
-})
+  console.log(`Server listening on ${PORT}`);
+});
