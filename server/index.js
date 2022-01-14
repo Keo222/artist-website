@@ -38,6 +38,14 @@ app.post("/create-payment-intent", async (req, res) => {
   });
 });
 
+// Trying out building an API ******************
+
+// Sale Art Work
+
+// Portfolio Art Work
+
+// Text for Website
+
 // PRACTICE GET REQUEST
 app.get("/api", (req, res) => {
   res.json({ message: "Hello from server!!!" });

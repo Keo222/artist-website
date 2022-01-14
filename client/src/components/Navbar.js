@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "styled-components";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faShoppingCart } from "@fortawesome/free-solid-svg-icons";
@@ -175,50 +175,57 @@ function Navbar({
   showDropdown,
 }) {
   const totalItems = cart.reduce((sum, { qty }) => sum + qty, 0);
+  let location = useLocation();
   return (
     <>
-      <Nav>
-        <LogoDiv>
-          <LogoLink to="/">
-            <Logo>FW</Logo>
-          </LogoLink>
-        </LogoDiv>
-        <NavLinks>
-          <LinkBtn to="/art">Store</LinkBtn>
-          <LinkBtn to="/portfolio">Portfolio</LinkBtn>
-          <LinkBtn to="/about">About</LinkBtn>
-          <LinkBtn to="/contact">Commissions</LinkBtn>
-        </NavLinks>
-        <ShoppingCartDiv onClick={() => setMiniCart(!showMiniCart)}>
-          <NumItemsInCart>{totalItems}</NumItemsInCart>
-          <FontAwesomeIcon icon={faShoppingCart} />
-        </ShoppingCartDiv>
-        <Bars onClick={() => dropdown()}>
-          <FontAwesomeIcon icon={faBars} />
-        </Bars>
-      </Nav>
-      <DropdownNav showDropdown={showDropdown}>
-        <LinkPTag>
-          <DropdownLinkBtn to="/art" onClick={() => dropdown()}>
-            Store
-          </DropdownLinkBtn>
-        </LinkPTag>
-        <LinkPTag>
-          <DropdownLinkBtn to="/portfolio" onClick={() => dropdown()}>
-            Portfolio
-          </DropdownLinkBtn>
-        </LinkPTag>
-        <LinkPTag>
-          <DropdownLinkBtn to="/about" onClick={() => dropdown()}>
-            About
-          </DropdownLinkBtn>
-        </LinkPTag>
-        <LinkPTag>
-          <DropdownLinkBtn to="/contact" onClick={() => dropdown()}>
-            Commissions
-          </DropdownLinkBtn>
-        </LinkPTag>
-      </DropdownNav>
+      {location.pathname !== "/admin" ? (
+        <>
+          <Nav>
+            <LogoDiv>
+              <LogoLink to="/">
+                <Logo>FW</Logo>
+              </LogoLink>
+            </LogoDiv>
+            <NavLinks>
+              <LinkBtn to="/art">Store</LinkBtn>
+              <LinkBtn to="/portfolio">Portfolio</LinkBtn>
+              <LinkBtn to="/about">About</LinkBtn>
+              <LinkBtn to="/contact">Commissions</LinkBtn>
+            </NavLinks>
+            <ShoppingCartDiv onClick={() => setMiniCart(!showMiniCart)}>
+              <NumItemsInCart>{totalItems}</NumItemsInCart>
+              <FontAwesomeIcon icon={faShoppingCart} />
+            </ShoppingCartDiv>
+            <Bars onClick={() => dropdown()}>
+              <FontAwesomeIcon icon={faBars} />
+            </Bars>
+          </Nav>
+          <DropdownNav showDropdown={showDropdown}>
+            <LinkPTag>
+              <DropdownLinkBtn to="/art" onClick={() => dropdown()}>
+                Store
+              </DropdownLinkBtn>
+            </LinkPTag>
+            <LinkPTag>
+              <DropdownLinkBtn to="/portfolio" onClick={() => dropdown()}>
+                Portfolio
+              </DropdownLinkBtn>
+            </LinkPTag>
+            <LinkPTag>
+              <DropdownLinkBtn to="/about" onClick={() => dropdown()}>
+                About
+              </DropdownLinkBtn>
+            </LinkPTag>
+            <LinkPTag>
+              <DropdownLinkBtn to="/contact" onClick={() => dropdown()}>
+                Commissions
+              </DropdownLinkBtn>
+            </LinkPTag>
+          </DropdownNav>
+        </>
+      ) : (
+        <></>
+      )}
     </>
   );
 }

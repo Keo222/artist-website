@@ -11,6 +11,7 @@ import Portfolio from "./pages/Portfolio";
 import Contact from "./pages/Contact";
 import Checkout from "./pages/Checkout";
 import Art from "./pages/Art";
+import AdminLogin from "./pages/Admin/AdminLogin";
 
 // Components
 import Navbar from "./components/Navbar";
@@ -114,15 +115,16 @@ function App() {
   return (
     <ThemeProvider theme={theme}>
       <GlobalStyle />
-      <ScrollToggleDiv showMiniCart={showMiniCart}>
-        <Router>
-          <Navbar
-            showMiniCart={showMiniCart}
-            setMiniCart={setMiniCart}
-            cart={cart}
-            dropdown={dropdown}
-            showDropdown={showDropdown}
-          />
+      {/* <ScrollToggleDiv showMiniCart={showMiniCart}> */}
+      <Router>
+        <Navbar
+          showMiniCart={showMiniCart}
+          setMiniCart={setMiniCart}
+          cart={cart}
+          dropdown={dropdown}
+          showDropdown={showDropdown}
+        />
+        {showMiniCart && (
           <MiniCart
             showMiniCart={showMiniCart}
             setMiniCart={setMiniCart}
@@ -131,36 +133,39 @@ function App() {
             setCart={setCart}
             setCartSelect={setCartSelect}
           />
-          <Routes>
-            <Route path="/" element={<Home />} />
-            <Route
-              path="/art"
-              element={
-                <Art
-                  art={exampleArt}
-                  cart={cart}
-                  setAddCartButton={setAddCartButton}
-                />
-              }
-            />
-            <Route path="/about" element={<About />} />
-            <Route path="/portfolio" element={<Portfolio />} />
-            <Route path="/contact" element={<Contact />} />
-            <Route
-              path="/checkout"
-              element={
-                <Checkout
-                  art={exampleArt}
-                  cart={cart}
-                  setCart={setCart}
-                  setCartSelect={setCartSelect}
-                />
-              }
-            />
-          </Routes>
-        </Router>
-        <Footer />
-      </ScrollToggleDiv>
+        )}
+
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route
+            path="/art"
+            element={
+              <Art
+                art={exampleArt}
+                cart={cart}
+                setAddCartButton={setAddCartButton}
+              />
+            }
+          />
+          <Route path="/about" element={<About />} />
+          <Route path="/portfolio" element={<Portfolio />} />
+          <Route path="/contact" element={<Contact />} />
+          <Route
+            path="/checkout"
+            element={
+              <Checkout
+                art={exampleArt}
+                cart={cart}
+                setCart={setCart}
+                setCartSelect={setCartSelect}
+              />
+            }
+          />
+          <Route path="/admin" element={<AdminLogin />} />
+        </Routes>
+      </Router>
+      <Footer />
+      {/* </ScrollToggleDiv> */}
     </ThemeProvider>
   );
 }
