@@ -28,7 +28,7 @@ import paintbrushes from "./imgs/paintbrushes.jpg";
 
 // Styles
 import { theme } from "./StyledElements/themes";
-import { ScrollToggleDiv } from "./StyledElements/divs";
+// import { ScrollToggleDiv } from "./StyledElements/divs";
 
 const exampleArt = [
   {

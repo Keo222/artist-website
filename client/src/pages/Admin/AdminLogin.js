@@ -25,6 +25,15 @@ const AdminHeading = styled.h1`
 
 const LoginForm = styled.form`
   margin-top: 8rem;
+  display: flex;
+  justify-content: center;
+  @media screen and (${(props) => props.theme.sm}) {
+    flex-direction: column;
+  }
+`;
+
+const LoginGrouping = styled.div`
+  margin-bottom: 3rem;
 `;
 
 const LoginLabel = styled.label`
@@ -53,10 +62,14 @@ const AdminLogin = () => {
       <Logo>FW</Logo>
       <AdminHeading>Admin Login</AdminHeading>
       <LoginForm>
-        <LoginLabel>Username:</LoginLabel>
-        <LoginInput type="text" />
-        <LoginLabel>Password:</LoginLabel>
-        <LoginInput type="password" />
+        <LoginGrouping>
+          <LoginLabel>Username:</LoginLabel>
+          <LoginInput type="text" />
+        </LoginGrouping>
+        <LoginGrouping>
+          <LoginLabel>Password:</LoginLabel>
+          <LoginInput type="password" />
+        </LoginGrouping>
       </LoginForm>
     </AdminLoginPage>
   );

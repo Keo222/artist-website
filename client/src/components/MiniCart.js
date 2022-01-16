@@ -6,8 +6,8 @@ import {
   faShoppingCart,
   faTimes,
 } from "@fortawesome/free-solid-svg-icons";
-
 import { v4 as uuid } from "uuid";
+import { disableBodyScroll, enableBodyScroll } from "body-scroll-lock";
 
 import MiniCartItem from "./MiniCartItem";
 
@@ -179,13 +179,23 @@ function MiniCart({
   // trial at making screen not scroll
   let screenWidth = window.innerWidth;
 
+  // useEffect(() => {
+  //   if (screenWidth < 501) {
+  //     console.log("SMALL SCREEN");
+  //     document.getElementById("root").style.overflowY = "hidden";
+  //   }
+  //   return () => {
+  //     document.getElementById("root").style.overflowY = "initial";
+  //   };
+  // });
+
   useEffect(() => {
     if (screenWidth < 501) {
       console.log("SMALL SCREEN");
-      document.getElementById("root").style.overflowY = "hidden";
+      disableBodyScroll(document.getElementById("root"));
     }
     return () => {
-      document.getElementById("root").style.overflowY = "initial";
+      enableBodyScroll(document.getElementById("root"));
     };
   });
 
