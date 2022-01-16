@@ -179,25 +179,27 @@ function MiniCart({
   // trial at making screen not scroll
   let screenWidth = window.innerWidth;
 
-  // useEffect(() => {
-  //   if (screenWidth < 501) {
-  //     console.log("SMALL SCREEN");
-  //     document.getElementById("root").style.overflowY = "hidden";
-  //   }
-  //   return () => {
-  //     document.getElementById("root").style.overflowY = "initial";
-  //   };
-  // });
-
   useEffect(() => {
     if (screenWidth < 501) {
       console.log("SMALL SCREEN");
-      disableBodyScroll(document.getElementById("root"));
+      document.getElementById("root").style.overflowY = "hidden";
+      document.getElementById("root").style.position = "fixed";
     }
     return () => {
-      enableBodyScroll(document.getElementById("root"));
+      document.getElementById("root").style.overflowY = "initial";
+      document.getElementById("root").style.position = "initial";
     };
   });
+
+  // useEffect(() => {
+  //   if (screenWidth < 501) {
+  //     console.log("SMALL SCREEN");
+  //     disableBodyScroll(document.getElementById("root"));
+  //   }
+  //   return () => {
+  //     enableBodyScroll(document.getElementById("root"));
+  //   };
+  // });
 
   return (
     <MiniCartContainer visible={showMiniCart}>
