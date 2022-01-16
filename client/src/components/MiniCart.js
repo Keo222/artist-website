@@ -1,8 +1,11 @@
-import React, { useState, useEffect } from "react";
+import React, { useEffect } from "react";
 import styled from "styled-components";
 import { Link } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faShoppingCart, faTimes } from "@fortawesome/free-solid-svg-icons";
+import {
+  faShoppingCart,
+  faTimes,
+} from "@fortawesome/free-solid-svg-icons";
 
 import { v4 as uuid } from "uuid";
 
@@ -180,9 +183,11 @@ function MiniCart({
     if (screenWidth < 501) {
       console.log("SMALL SCREEN");
       document.body.style.overflowY = "hidden";
+      document.body.style.position = "fixed";
     }
     return () => {
       document.body.style.overflowY = "initial";
+      document.body.style.position = "initial";
     };
   });
 
