@@ -182,12 +182,10 @@ function MiniCart({
   useEffect(() => {
     if (screenWidth < 501) {
       console.log("SMALL SCREEN");
-      document.body.style.overflowY = "hidden";
-      document.body.style.position = "fixed";
+      document.getElementById("root").style.overflowY = "hidden";
     }
     return () => {
-      document.body.style.overflowY = "initial";
-      document.body.style.position = "initial";
+      document.getElementById("root").style.overflowY = "initial";
     };
   });
 
