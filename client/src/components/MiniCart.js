@@ -39,8 +39,8 @@ const MiniCartContainer = styled.div`
   @media screen and (${(props) => props.theme.xs}) {
     width: 100vw;
     top: 0;
-    height: 100vh;
-    max-height: 100vh;
+    height: 100%;
+    max-height: 100%;
     border-radius: 0;
   }
 `;
