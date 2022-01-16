@@ -85,8 +85,8 @@ function App() {
   const [showMiniCart, setMiniCart] = useState(false);
   const [cart, setCart] = useState([]);
 
-  const [showDropdown, setShowDropdown] = useState(false);
-  const dropdown = () => setShowDropdown(!showDropdown);
+  // const [showDropdown, setShowDropdown] = useState(false);
+  // const dropdown = () => setShowDropdown(!showDropdown);
 
   const setAddCartButton = (item) => {
     let updatedCart;
@@ -121,8 +121,8 @@ function App() {
           showMiniCart={showMiniCart}
           setMiniCart={setMiniCart}
           cart={cart}
-          dropdown={dropdown}
-          showDropdown={showDropdown}
+          // dropdown={dropdown}
+          // showDropdown={showDropdown}
         />
         {showMiniCart && (
           <MiniCart
@@ -163,8 +163,8 @@ function App() {
           />
           <Route path="/admin" element={<AdminLogin />} />
         </Routes>
+        <Footer />
       </Router>
-      <Footer />
       {/* </ScrollToggleDiv> */}
     </ThemeProvider>
   );

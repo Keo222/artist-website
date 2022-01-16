@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
 import { Link, useLocation } from "react-router-dom";
 
@@ -54,7 +54,8 @@ const Bars = styled.div`
 const DropdownNav = styled.div`
   display: none;
   @media screen and (${(props) => props.theme.sm}) {
-    display: ${(props) => (props.showDropdown ? "flex" : "none")};
+    /* display: ${(props) => (props.showDropdown ? "flex" : "none")}; */
+    display: flex;
     flex-direction: column;
     justify-content: space-around;
     position: fixed;
@@ -167,18 +168,16 @@ const LinkPTag = styled.p`
   text-align: center;
 `;
 
-function Navbar({
-  showMiniCart,
-  setMiniCart,
-  cart,
-  dropdown,
-  showDropdown,
-}) {
+function Navbar({ showMiniCart, setMiniCart, cart }) {
+  const [showDropdown, setShowDropdown] = useState(false);
+  const dropdown = () => setShowDropdown(!showDropdown);
+
   const totalItems = cart.reduce((sum, { qty }) => sum + qty, 0);
   let location = useLocation();
+
   return (
     <>
-      {location.pathname !== "/admin" ? (
+      {location.pathname !== "/admin" && (
         <>
           <Nav>
             <LogoDiv>
@@ -200,31 +199,31 @@ function Navbar({
               <FontAwesomeIcon icon={faBars} />
             </Bars>
           </Nav>
-          <DropdownNav showDropdown={showDropdown}>
-            <LinkPTag>
-              <DropdownLinkBtn to="/art" onClick={() => dropdown()}>
-                Store
-              </DropdownLinkBtn>
-            </LinkPTag>
-            <LinkPTag>
-              <DropdownLinkBtn to="/portfolio" onClick={() => dropdown()}>
-                Portfolio
-              </DropdownLinkBtn>
-            </LinkPTag>
-            <LinkPTag>
-              <DropdownLinkBtn to="/about" onClick={() => dropdown()}>
-                About
-              </DropdownLinkBtn>
-            </LinkPTag>
-            <LinkPTag>
-              <DropdownLinkBtn to="/contact" onClick={() => dropdown()}>
-                Commissions
-              </DropdownLinkBtn>
-            </LinkPTag>
-          </DropdownNav>
+          {showDropdown && (
+            <DropdownNav showDropdown={showDropdown}>
+              <LinkPTag>
+                <DropdownLinkBtn to="/art" onClick={() => dropdown()}>
+                  Store
+                </DropdownLinkBtn>
+              </LinkPTag>
+              <LinkPTag>
+                <DropdownLinkBtn to="/portfolio" onClick={() => dropdown()}>
+                  Portfolio
+                </DropdownLinkBtn>
+              </LinkPTag>
+              <LinkPTag>
+                <DropdownLinkBtn to="/about" onClick={() => dropdown()}>
+                  About
+                </DropdownLinkBtn>
+              </LinkPTag>
+              <LinkPTag>
+                <DropdownLinkBtn to="/contact" onClick={() => dropdown()}>
+                  Commissions
+                </DropdownLinkBtn>
+              </LinkPTag>
+            </DropdownNav>
+          )}
         </>
-      ) : (
-        <></>
       )}
     </>
   );

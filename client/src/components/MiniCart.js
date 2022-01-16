@@ -1,11 +1,8 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import styled from "styled-components";
 import { Link } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import {
-  faShoppingCart,
-  faTimes,
-} from "@fortawesome/free-solid-svg-icons";
+import { faShoppingCart, faTimes } from "@fortawesome/free-solid-svg-icons";
 
 import { v4 as uuid } from "uuid";
 
@@ -175,6 +172,19 @@ function MiniCart({
   };
 
   const total = findTotal();
+
+  // trial at making screen not scroll
+  let screenWidth = window.innerWidth;
+
+  useEffect(() => {
+    if (screenWidth < 501) {
+      console.log("SMALL SCREEN");
+      document.body.style.overflowY = "hidden";
+    }
+    return () => {
+      document.body.style.overflowY = "initial";
+    };
+  });
 
   return (
     <MiniCartContainer visible={showMiniCart}>

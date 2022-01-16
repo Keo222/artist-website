@@ -61,6 +61,14 @@ const ContactLabel = styled.label`
 const ContactInput = styled.input`
   height: 2rem;
   max-width: 30ch;
+  border: none;
+  border-radius: 3px;
+  background: #eee;
+
+  &:focus {
+    outline: 2px solid yellowgreen;
+    box-shadow: 0 3px 8px 5px rgba(0, 0, 0, 0.2);
+  }
 `;
 const ContactSelect = styled.select`
   font-size: 1.4rem;
@@ -75,6 +83,13 @@ const ContactTextArea = styled.textarea`
   height: 20rem;
   font-size: 1.6rem;
   font-family: inherit;
+  border: none;
+  border-radius: 3px;
+
+  &:focus {
+    outline: 3px solid yellowgreen;
+    /* box-shadow: 0 3px 8px 5px rgba(0, 0, 0, 0.2); */
+  }
 `;
 
 const ContactButton = styled.button`
@@ -101,19 +116,18 @@ function Contact() {
         <Heading>Contact</Heading>
         <ContactInfoContainer>
           <ContactText>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Modi
-            esse accusamus nostrum! Enim fugiat, in quisquam nesciunt
-            cumque totam qui aspernatur magnam, itaque vitae hic quaerat
-            quas animi rerum quos! Officiis eligendi, recusandae quasi
-            magni, ducimus blanditiis iste rerum doloremque praesentium
-            earum sit! Beatae necessitatibus in deserunt recusandae
-            incidunt, commodi quaerat culpa aliquid exercitationem delectus
-            modi id, accusantium et possimus quas reprehenderit minus non
-            doloremque tempora, sed eos. Ipsa enim non accusantium nulla,
-            voluptas at dolorem quos error, pariatur perspiciatis quam eius
-            quisquam corrupti aut deserunt facilis doloribus ea placeat,
-            iusto accusamus inventore eligendi corporis eveniet ex?
-            Excepturi, magnam delectus!
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Modi esse
+            accusamus nostrum! Enim fugiat, in quisquam nesciunt cumque totam
+            qui aspernatur magnam, itaque vitae hic quaerat quas animi rerum
+            quos! Officiis eligendi, recusandae quasi magni, ducimus blanditiis
+            iste rerum doloremque praesentium earum sit! Beatae necessitatibus
+            in deserunt recusandae incidunt, commodi quaerat culpa aliquid
+            exercitationem delectus modi id, accusantium et possimus quas
+            reprehenderit minus non doloremque tempora, sed eos. Ipsa enim non
+            accusantium nulla, voluptas at dolorem quos error, pariatur
+            perspiciatis quam eius quisquam corrupti aut deserunt facilis
+            doloribus ea placeat, iusto accusamus inventore eligendi corporis
+            eveniet ex? Excepturi, magnam delectus!
           </ContactText>
         </ContactInfoContainer>
 
