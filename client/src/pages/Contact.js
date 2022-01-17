@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
 import { TextDiv, PageDiv } from "../StyledElements/divs";
 import { Heading, ParagraphText } from "../StyledElements/typography";
@@ -73,6 +73,14 @@ const ContactInput = styled.input`
 const ContactSelect = styled.select`
   font-size: 1.4rem;
   height: 2.5rem;
+  border-radius: 3px;
+  background: #eee;
+
+  &:focus {
+    outline: 2px solid yellowgreen;
+    box-shadow: 0 3px 8px 5px rgba(0, 0, 0, 0.2);
+  }
+
   @media screen and (${(props) => props.theme.md}) {
     width: 25ch;
   }
@@ -110,24 +118,27 @@ const ContactButton = styled.button`
 `;
 
 function Contact() {
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
   return (
     <PageDiv>
       <TextDiv>
         <Heading>Contact</Heading>
         <ContactInfoContainer>
           <ContactText>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Modi esse
-            accusamus nostrum! Enim fugiat, in quisquam nesciunt cumque totam
-            qui aspernatur magnam, itaque vitae hic quaerat quas animi rerum
-            quos! Officiis eligendi, recusandae quasi magni, ducimus blanditiis
-            iste rerum doloremque praesentium earum sit! Beatae necessitatibus
-            in deserunt recusandae incidunt, commodi quaerat culpa aliquid
-            exercitationem delectus modi id, accusantium et possimus quas
-            reprehenderit minus non doloremque tempora, sed eos. Ipsa enim non
-            accusantium nulla, voluptas at dolorem quos error, pariatur
-            perspiciatis quam eius quisquam corrupti aut deserunt facilis
-            doloribus ea placeat, iusto accusamus inventore eligendi corporis
-            eveniet ex? Excepturi, magnam delectus!
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Modi
+            esse accusamus nostrum! Enim fugiat, in quisquam nesciunt
+            cumque totam qui aspernatur magnam, itaque vitae hic quaerat
+            quas animi rerum quos! Officiis eligendi, recusandae quasi
+            magni, ducimus blanditiis iste rerum doloremque praesentium
+            earum sit! Beatae necessitatibus in deserunt recusandae
+            incidunt, commodi quaerat culpa aliquid exercitationem delectus
+            modi id, accusantium et possimus quas reprehenderit minus non
+            doloremque tempora, sed eos. Ipsa enim non accusantium nulla,
+            voluptas at dolorem quos error, pariatur perspiciatis quam eius
+            quisquam corrupti aut deserunt facilis doloribus ea placeat,
+            iusto accusamus inventore eligendi corporis eveniet ex?
+            Excepturi, magnam delectus!
           </ContactText>
         </ContactInfoContainer>
 
@@ -135,11 +146,23 @@ function Contact() {
           <ContactForm>
             <InputGrouping>
               <ContactLabel htmlFor="name">Name:</ContactLabel>
-              <ContactInput type="text" name="name" id="name" />
+              <ContactInput
+                type="text"
+                name="name"
+                id="name"
+                onChange={(e) => setName(e.target.value)}
+                value={name}
+              />
             </InputGrouping>
             <InputGrouping>
               <ContactLabel htmlFor="email">Email:</ContactLabel>
-              <ContactInput type="email" name="email" id="email" />
+              <ContactInput
+                type="email"
+                name="email"
+                id="email"
+                onChange={(e) => setEmail(e.target.value)}
+                value={email}
+              />
             </InputGrouping>
             <InputGrouping>
               <ContactLabel htmlFor="pronouns">Pronouns:</ContactLabel>
@@ -158,7 +181,11 @@ function Contact() {
             rows="10"
             placeholder="Your message..."
           ></ContactTextArea>
-          <ContactButton>Submit</ContactButton>
+          <div
+            class="g-recaptcha"
+            data-sitekey="6LfgQBkeAAAAACbqIC6FblAtii250qaqWMcPWrbe"
+          ></div>
+          <ContactButton type="submit">Submit</ContactButton>
         </ContactFormDiv>
       </TextDiv>
     </PageDiv>

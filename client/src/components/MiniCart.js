@@ -7,7 +7,6 @@ import {
   faTimes,
 } from "@fortawesome/free-solid-svg-icons";
 import { v4 as uuid } from "uuid";
-import { disableBodyScroll, enableBodyScroll } from "body-scroll-lock";
 
 import MiniCartItem from "./MiniCartItem";
 
@@ -190,16 +189,6 @@ function MiniCart({
       document.getElementById("root").style.position = "initial";
     };
   });
-
-  // useEffect(() => {
-  //   if (screenWidth < 501) {
-  //     console.log("SMALL SCREEN");
-  //     disableBodyScroll(document.getElementById("root"));
-  //   }
-  //   return () => {
-  //     enableBodyScroll(document.getElementById("root"));
-  //   };
-  // });
 
   return (
     <MiniCartContainer visible={showMiniCart}>
