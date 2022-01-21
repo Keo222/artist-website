@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
 import { createGlobalStyle } from "styled-components";
@@ -85,8 +85,11 @@ function App() {
   const [showMiniCart, setMiniCart] = useState(false);
   const [cart, setCart] = useState([]);
 
-  // const [showDropdown, setShowDropdown] = useState(false);
-  // const dropdown = () => setShowDropdown(!showDropdown);
+  useEffect(() => {
+    if (localStorage.getItem("cart") !== null) {
+      setCart(JSON.parse(localStorage.getItem("cart")));
+    }
+  }, []);
 
   const setAddCartButton = (item) => {
     let updatedCart;
@@ -99,6 +102,7 @@ function App() {
       updatedCart[itemIndex].qty += 1;
     }
     setCart(updatedCart);
+    localStorage.setItem("cart", JSON.stringify(updatedCart));
   };
 
   const setCartSelect = (newId, newQty) => {
@@ -109,6 +113,7 @@ function App() {
     } else {
       updatedCart[itemIndex].qty = newQty;
       setCart(updatedCart);
+      localStorage.setItem("cart", JSON.stringify(updatedCart));
     }
   };
 

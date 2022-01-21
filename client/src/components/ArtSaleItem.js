@@ -74,6 +74,7 @@ const AddedToCartButton = styled.div`
 
 const PartialHR = styled.hr`
   width: 80%;
+  border-top: 1px solid #999;
 `;
 
 const ImgDiv = styled.div`

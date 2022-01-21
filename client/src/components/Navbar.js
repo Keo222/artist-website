@@ -207,7 +207,10 @@ function Navbar({ showMiniCart, setMiniCart, cart }) {
                 </DropdownLinkBtn>
               </LinkPTag>
               <LinkPTag>
-                <DropdownLinkBtn to="/portfolio" onClick={() => dropdown()}>
+                <DropdownLinkBtn
+                  to="/portfolio"
+                  onClick={() => dropdown()}
+                >
                   Portfolio
                 </DropdownLinkBtn>
               </LinkPTag>

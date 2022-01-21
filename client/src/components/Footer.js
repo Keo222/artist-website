@@ -1,7 +1,10 @@
 import React from "react";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faInstagram, faSoundcloud } from "@fortawesome/free-brands-svg-icons";
+import {
+  faInstagram,
+  faSoundcloud,
+} from "@fortawesome/free-brands-svg-icons";
 import { useLocation } from "react-router-dom";
 
 import styled from "styled-components";
@@ -45,11 +48,12 @@ function Footer() {
   let location = useLocation();
   return (
     <>
-      {location.pathname !== "/admin" && (
+      {location.pathname !== "/admin" && location.pathname !== "/contact" && (
         <FooterDiv>
           <TextDiv>
             <FooterText>
-              FRANKIE WINTERBOURNE BUSINESS BUREAU FOR EXCELLENCE IN BUSINESS
+              FRANKIE WINTERBOURNE BUSINESS BUREAU FOR EXCELLENCE IN
+              BUSINESS
             </FooterText>
           </TextDiv>
           <SocialsDiv>

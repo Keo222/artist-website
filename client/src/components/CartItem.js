@@ -4,15 +4,35 @@ import styled from "styled-components";
 const CartItemDiv = styled.div`
   background: #fff;
   border-radius: 30px;
-  width: 50%;
+  width: 65%;
   height: 20rem;
   margin: 4rem auto;
   display: flex;
   overflow: hidden;
+
+  @media screen and (${(props) => props.theme.lg}) {
+    width: 75%;
+  }
+  @media screen and (${(props) => props.theme.md}) {
+    width: 85%;
+  }
+  @media screen and (${(props) => props.theme.sm}) {
+    width: 95%;
+  }
+  @media screen and (${(props) => props.theme.xs}) {
+    width: 95%;
+    flex-direction: column;
+    height: 68rem;
+  }
 `;
 const CartImgDiv = styled.div`
-  width: 25%;
+  width: 20rem;
   border-right: 1px solid black;
+  @media screen and (${(props) => props.theme.xs}) {
+    width: 100%;
+    height: 40rem;
+    overflow-y: hidden;
+  }
 `;
 const ArtImg = styled.img`
   width: 100%;
@@ -25,6 +45,10 @@ const CartNameDiv = styled.div`
   text-align: center;
   display: flex;
   flex-direction: column;
+  @media screen and (${(props) => props.theme.xs}) {
+    width: 100%;
+    margin-bottom: 3rem;
+  }
 `;
 const ItemName = styled.p`
   margin-top: 3rem;
@@ -50,6 +74,9 @@ const QtyDiv = styled.div`
   flex-direction: column;
   font-size: 1.6rem;
   align-items: flex-start;
+  @media screen and (${(props) => props.theme.xs}) {
+    width: 100%;
+  }
 `;
 const CartPriceDiv = styled.div`
   width: 35%;
@@ -58,6 +85,11 @@ const CartPriceDiv = styled.div`
   display: grid;
   grid-template-columns: 2.5fr 1fr;
   grid-template-rows: 2fr 1fr;
+  @media screen and (${(props) => props.theme.xs}) {
+    border-left: none;
+    border-top: 1px solid black;
+    width: 100%;
+  }
 `;
 
 const Label = styled.label`

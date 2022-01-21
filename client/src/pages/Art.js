@@ -45,6 +45,9 @@ const AboutInfoDiv = styled.div`
 const SaleItems = styled.div`
   width: 100%;
   margin-top: 15rem;
+  @media screen and (${(props) => props.theme.lg}) {
+    margin-top: 5rem;
+  }
 `;
 
 // PRINT CART STATE
