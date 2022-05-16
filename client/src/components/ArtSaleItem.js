@@ -4,10 +4,11 @@ import styled from "styled-components";
 
 const SaleDiv = styled.div`
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: 1fr 2fr;
   grid-template-rows: 2fr 1fr;
   width: 90%;
-  margin: 5rem auto;
+  margin-block: 5rem;
+  margin-right: auto;
   height: 50rem;
   padding-bottom: 5rem;
   border-bottom: 2px solid #333;

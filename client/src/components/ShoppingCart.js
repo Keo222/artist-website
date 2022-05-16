@@ -41,6 +41,7 @@ function ShoppingCart({ art, cart, setCartSelect, setCart }) {
         name={item.name}
         desc={item.desc}
         id={item.id}
+        key={item.id}
         price={item.price}
         img={item.img}
         qty={c.qty}

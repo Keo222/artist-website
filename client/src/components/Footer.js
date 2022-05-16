@@ -51,10 +51,7 @@ function Footer() {
       {location.pathname !== "/admin" && location.pathname !== "/contact" && (
         <FooterDiv>
           <TextDiv>
-            <FooterText>
-              FRANKIE WINTERBOURNE BUSINESS BUREAU FOR EXCELLENCE IN
-              BUSINESS
-            </FooterText>
+            <FooterText>FRANKIE WINTERBOURNE ART</FooterText>
           </TextDiv>
           <SocialsDiv>
             <SocialLink

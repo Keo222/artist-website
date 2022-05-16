@@ -5,7 +5,7 @@ export const theme = {
   // MEDIA SIZES
   xs: "max-width: 500px",
   sm: "max-width: 830px",
-  md: "max-width: 1000px",
-  lg: "max-width: 1200px",
+  md: "max-width: 1100px",
+  lg: "max-width: 1300px",
   xl: "max-width: 1500px",
 };

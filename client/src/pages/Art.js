@@ -18,18 +18,11 @@ const AboutDiv = styled.div`
 `;
 
 const LeftInfoDiv = styled.div`
-  width: 40%;
+  width: 80%;
   @media screen and (${(props) => props.theme.lg}) {
     width: 100%;
   }
 `;
-
-// const AboutHeading = styled.h1`
-//   color: ${props => props.theme.highlightColor};
-//   font-family: 'Rock 3D', cursive;
-//   font-size: 6rem;
-//   padding-top: 3rem;
-// `
 
 const AboutInfoDiv = styled.div`
   width: 90%;
@@ -37,10 +30,6 @@ const AboutInfoDiv = styled.div`
   padding-bottom: 5rem;
 `;
 
-// const AboutText = styled.p`
-//   font-size: 2rem;
-//   color: #ddd;
-// `
 // SALE ITEMS
 const SaleItems = styled.div`
   width: 100%;

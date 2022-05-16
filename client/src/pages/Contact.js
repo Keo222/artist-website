@@ -25,6 +25,13 @@ const ContactFormDiv = styled.div`
 
 const SmallContactInputs = styled.div`
   display: flex;
+  margin: 0 auto;
+
+  @media screen and (${(props) => props.theme.md}) {
+    width: 60%;
+    flex-direction: column;
+    align-items: center;
+  }
 `;
 
 const TextAreaAndButton = styled.div`
@@ -46,7 +53,6 @@ const InputGrouping = styled.div`
   margin: 0 2rem;
   @media screen and (${(props) => props.theme.md}) {
     margin: 2rem 0;
-    flex-direction: column;
     text-align: initial;
   }
 `;
