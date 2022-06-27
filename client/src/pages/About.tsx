@@ -85,22 +85,12 @@ function About() {
             href="https://www.instagram.com/frank_winterbourne/"
             target="_blank"
           >
-            <FontAwesomeIcon icon={faInstagram} />
-          </SocialLink>
-          <SocialLink
-            href="https://soundcloud.com/frank-winterbourne"
-            target="_blank"
-          >
-            <FontAwesomeIcon icon={faSoundcloud} />
+            {/* <FontAwesomeIcon icon={faInstagram} /> */}
+            <p>Instagram</p>
           </SocialLink>
         </SocialLinksDiv>
       </TextDiv>
     </PageDiv>
   );
 }
-
-/* <AboutText>
-  Kyle Olsen is a freelance bassoonist in Portland, OR. He is a regular substitute with the Oregon Symphony, the Oregon Ballet Theater and the Portland Opera. While attending Rice University, where he received his Bachelor's of Music degree, Kyle studied under Benjamin Kamins. He continued his studies at Juilliard where he studied under William Short. All of the reeds made by Kyle are made using the Herzberg shape. He has also performed with groups such as The Music Academy of the West, the National Repertory Orchestra, and the Colorado Music Festival where he had a temporary position for one season.
-</AboutText> */
-
 export default About;

@@ -168,7 +168,7 @@ const LinkPTag = styled.p`
   text-align: center;
 `;
 
-function Navbar({ showMiniCart, setMiniCart, cart }) {
+function Navbar({ setShowMiniCart, setMiniCart, cart }) {
   const [showDropdown, setShowDropdown] = useState(false);
   const dropdown = () => setShowDropdown(!showDropdown);
 
@@ -191,7 +191,7 @@ function Navbar({ showMiniCart, setMiniCart, cart }) {
               <LinkBtn to="/about">About</LinkBtn>
               <LinkBtn to="/contact">Commissions</LinkBtn>
             </NavLinks>
-            <ShoppingCartDiv onClick={() => setMiniCart(!showMiniCart)}>
+            <ShoppingCartDiv onClick={() => setMiniCart(!setShowMiniCart)}>
               <NumItemsInCart>{totalItems}</NumItemsInCart>
               <FontAwesomeIcon icon={faShoppingCart} />
             </ShoppingCartDiv>

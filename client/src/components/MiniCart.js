@@ -138,8 +138,8 @@ const PurchaseButton = styled(Link)`
 `;
 
 function MiniCart({
+  setShowMiniCart,
   showMiniCart,
-  setMiniCart,
   art,
   cart,
   setCart,
@@ -191,7 +191,7 @@ function MiniCart({
   });
 
   return (
-    <MiniCartContainer visible={showMiniCart}>
+    <MiniCartContainer visible={setShowMiniCart}>
       {/* CART TITLE */}
       <TitleContainer>
         <TitleDiv>
@@ -201,7 +201,7 @@ function MiniCart({
           <Title>Items in Cart:</Title>
         </TitleDiv>
         <CloseIconContainer>
-          <CloseButton onClick={() => setMiniCart(!showMiniCart)}>
+          <CloseButton onClick={() => setShowMiniCart(!showMiniCart)}>
             <FontAwesomeIcon icon={faTimes} />
           </CloseButton>
         </CloseIconContainer>
@@ -220,7 +220,7 @@ function MiniCart({
         <Total>Total: ${total}.00</Total>
         <PurchaseButton
           to="/checkout"
-          onClick={() => setMiniCart(!showMiniCart)}
+          onClick={() => setShowMiniCart(!showMiniCart)}
         >
           Checkout
         </PurchaseButton>
