@@ -143,7 +143,7 @@ function MiniCart({
   art,
   cart,
   setCart,
-  setCartSelect,
+  updateCartQty,
 }) {
   const cartItemCards = cart.map((c) => {
     const item = art.find((i) => i.id === c.id);
@@ -156,7 +156,7 @@ function MiniCart({
         cart={cart}
         setCart={setCart}
         qty={c.qty}
-        setCartSelect={setCartSelect}
+        updateCartQty={updateCartQty}
         art={item.img}
       />
     );

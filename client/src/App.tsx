@@ -57,10 +57,11 @@ function App() {
     localStorage.setItem("cart", JSON.stringify(updatedCart));
   };
 
-  const setCartSelect = (newId: string, newQty: number) => {
+  const updateCartQty = (newId: string, newQty: number) => {
     const updatedCart = [...cart];
     const itemIndex = cart.findIndex((i) => i.id === newId);
     if (itemIndex === -1) {
+      // #!#!# NEEDS BETTER ERROR HANDLING #!#!#
       console.log("Did not find cart item");
     } else {
       updatedCart[itemIndex].qty = newQty;
@@ -78,7 +79,7 @@ function App() {
           setShowMiniCart={setShowMiniCart}
           cart={cart}
           setCart={setCart}
-          setCartSelect={setCartSelect}
+          updateCartQty={updateCartQty}
           saleArt={saleArt}
         >
           <Routes>
@@ -99,7 +100,7 @@ function App() {
                   art={saleArt}
                   cart={cart}
                   setCart={setCart}
-                  setCartSelect={setCartSelect}
+                  updateCartQty={updateCartQty}
                 />
               }
             />

@@ -14,7 +14,7 @@ type Props = {
   cart: TCartItem[] | [];
   saleArt: TSaleArt[];
   setCart: React.Dispatch<React.SetStateAction<TCartItem[]>>;
-  setCartSelect: (newId: string, newQty: number) => void;
+  updateCartQty: (newId: string, newQty: number) => void;
   children: JSX.Element;
 };
 
@@ -23,7 +23,7 @@ const PageLayout = ({
   setShowMiniCart,
   cart,
   setCart,
-  setCartSelect,
+  updateCartQty,
   saleArt,
   children,
 }: Props) => {
@@ -41,7 +41,7 @@ const PageLayout = ({
           art={saleArt}
           cart={cart}
           setCart={setCart}
-          setCartSelect={setCartSelect}
+          updateCartQty={updateCartQty}
         />
       )}
       {children}

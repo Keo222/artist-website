@@ -1,4 +1,5 @@
 import React from "react";
+import { TCartItem } from "src/types/artInfoTypes";
 import styled from "styled-components";
 
 const CartItemDiv = styled.div`
@@ -131,6 +132,18 @@ const BottomInnerText = styled.p`
   cursor: pointer;
 `;
 
+type Props = {
+  name: string;
+  desc: string;
+  id: string;
+  price: number;
+  img: string;
+  qty: number;
+  cart: TCartItem[];
+  setCart: React.Dispatch<React.SetStateAction<TCartItem[]>>;
+  updateCartQty: (newId: string, newQty: number) => void;
+};
+
 function CartItem({
   name,
   desc,
@@ -140,10 +153,10 @@ function CartItem({
   qty,
   cart,
   setCart,
-  setCartSelect,
-}) {
-  const deleteItem = (item) => {
-    const idx = cart.findIndex((i) => i.id === item);
+  updateCartQty,
+}: Props) {
+  const deleteItem = (itemId: string) => {
+    const idx = cart.findIndex((i) => i.id === itemId);
     const cartCopy = [...cart];
     cartCopy.splice(idx, 1);
     setCart(cartCopy);
@@ -166,8 +179,8 @@ function CartItem({
           <QtySelect
             name="numCartItems"
             id="numCartItems"
-            defaultValue={parseInt(qty)}
-            onChange={(e) => setCartSelect(id, parseInt(e.target.value))}
+            defaultValue={qty}
+            onChange={(e) => updateCartQty(id, parseInt(e.target.value))}
           >
             {/* <option value="0">0</option> */}
             <option value="1">1</option>
