@@ -1,7 +1,6 @@
-import React from 'react'
+import React from "react";
 
-import styled from 'styled-components'
-
+import styled from "styled-components";
 
 const BtnPay = styled.button`
   font-size: 1.8rem;
@@ -13,24 +12,28 @@ const BtnPay = styled.button`
   color: #fff;
   border: none;
   cursor: pointer;
-`
+`;
 const BtnDisabled = styled(BtnPay)`
   background: #555;
   color: white;
   cursor: wait;
-`
+`;
 
-function PayButton({isDisabled}) {
+type Props = {
+  isDisabled: boolean;
+};
+
+function PayButton({ isDisabled }: Props) {
   return (
     <div>
-      Is the button disabled: {isDisabled ? 'yes' : 'no'}
+      Is the button disabled: {isDisabled ? "yes" : "no"}
       {isDisabled ? (
         <BtnDisabled disabled>Disabled</BtnDisabled>
       ) : (
         <BtnPay>Pay Now</BtnPay>
       )}
     </div>
-  )
+  );
 }
 
-export default PayButton
+export default PayButton;
