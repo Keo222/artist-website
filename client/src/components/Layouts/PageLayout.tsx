@@ -6,7 +6,6 @@ import type { TCartItem, TSaleArt } from "src/types/artInfoTypes";
 // Components
 import Navbar from "../Navbar";
 import MiniCart from "../MiniCart";
-import Footer from "../Footer";
 
 type Props = {
   showMiniCart: boolean;
