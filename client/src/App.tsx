@@ -5,10 +5,10 @@ import { createGlobalStyle } from "styled-components";
 import { ThemeProvider } from "styled-components";
 
 // Types
-import type { TCartItem } from "types/artInfoTypes";
+import type { TCartItem } from "src/types/artInfoTypes";
 
 // Art from DB
-import { saleArt } from "tempDB/art";
+import { saleArt } from "./tempDB/art";
 
 // Layout
 import PageLayout from "./components/Layouts/PageLayout";
@@ -72,15 +72,15 @@ function App() {
   return (
     <ThemeProvider theme={theme}>
       <GlobalStyle />
-      <PageLayout
-        showMiniCart={showMiniCart}
-        setShowMiniCart={setShowMiniCart}
-        cart={cart}
-        setCart={setCart}
-        setCartSelect={setCartSelect}
-        saleArt={saleArt}
-      >
-        <Router>
+      <Router>
+        <PageLayout
+          showMiniCart={showMiniCart}
+          setShowMiniCart={setShowMiniCart}
+          cart={cart}
+          setCart={setCart}
+          setCartSelect={setCartSelect}
+          saleArt={saleArt}
+        >
           <Routes>
             <Route path="/" element={<Home />} />
             <Route
@@ -109,8 +109,8 @@ function App() {
             />
             <Route path="/admin" element={<AdminLogin />} />
           </Routes>
-        </Router>
-      </PageLayout>
+        </PageLayout>
+      </Router>
     </ThemeProvider>
   );
 }

@@ -1,10 +1,10 @@
 // Sale Images
-import screamPic from "./imgs/scream.jpg";
-import monaLisaPic from "./imgs/monaLisa.jpg";
-import watermelonPic from "./imgs/watermelon.jpg";
-import frog from "./imgs/frog.jpg";
-import paint from "./imgs/paint.jpg";
-import paintbrushes from "./imgs/paintbrushes.jpg";
+import screamPic from "../imgs/scream.jpg";
+import monaLisaPic from "../imgs/monaLisa.jpg";
+import watermelonPic from "../imgs/watermelon.jpg";
+import frog from "../imgs/frog.jpg";
+import paint from "../imgs/paint.jpg";
+import paintbrushes from "../imgs/paintbrushes.jpg";
 
 export const saleArt = [
   {

@@ -1,7 +1,7 @@
 import React from "react";
 
 // Types
-import type { TCartItem, TSaleArt } from "types/artInfoTypes";
+import type { TCartItem, TSaleArt } from "src/types/artInfoTypes";
 
 // Components
 import Navbar from "../Navbar";
