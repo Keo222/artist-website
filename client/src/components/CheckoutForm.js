@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import {
   PaymentElement,
   useStripe,
-  useElements
+  useElements,
 } from "@stripe/react-stripe-js";
 import PayButton from "./PayButton";
 import styled from "styled-components";
@@ -10,7 +10,7 @@ import styled from "styled-components";
 const CenteringDiv = styled.div`
   width: 80%;
   margin: 0 auto;
-`
+`;
 
 export default function CheckoutForm() {
   const stripe = useStripe();
@@ -30,26 +30,34 @@ export default function CheckoutForm() {
 
     if (!clientSecret) {
       // *************************
-      console.log("NO SECRET")
+      console.log("NO SECRET");
       return;
     }
 
-    stripe.retrievePaymentIntent(clientSecret).then(({ paymentIntent }) => {
-      switch (paymentIntent.status) {
-        case "succeeded":
-          setMessage("Payment succeeded!");
-          break;
-        case "processing":
-          setMessage("Your payment is processing.");
-          break;
-        case "requires_payment_method":
-          setMessage("Your payment was not successful, please try again.");
-          break;
-        default:
+    stripe
+      .retrievePaymentIntent(clientSecret)
+      .then(({ paymentIntent }) => {
+        if (typeof paymentIntent !== undefined) {
+          switch (paymentIntent.status) {
+            case "succeeded":
+              setMessage("Payment succeeded!");
+              break;
+            case "processing":
+              setMessage("Your payment is processing.");
+              break;
+            case "requires_payment_method":
+              setMessage(
+                "Your payment was not successful, please try again."
+              );
+              break;
+            default:
+              setMessage("Something went wrong.");
+              break;
+          }
+        } else {
           setMessage("Something went wrong.");
-          break;
-      }
-    });
+        }
+      });
   }, [stripe]);
 
   const handleSubmit = async (e) => {
@@ -89,13 +97,17 @@ export default function CheckoutForm() {
     <CenteringDiv>
       <form id="payment-form" onSubmit={handleSubmit}>
         <PaymentElement id="payment-element" />
-        <PayButton 
-          // isDisabled={isLoading || !stripe || !elements} 
-          isDisabled={true} 
+        <PayButton
+          // isDisabled={isLoading || !stripe || !elements}
+          isDisabled={true}
           id="submit"
         >
           <span id="button-text">
-            {isLoading ? <div className="spinner" id="spinner"></div> : "Pay now"}
+            {isLoading ? (
+              <div className="spinner" id="spinner"></div>
+            ) : (
+              "Pay now"
+            )}
           </span>
         </PayButton>
         {/* Show any error or success messages */}
