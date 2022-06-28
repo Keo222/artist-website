@@ -10,6 +10,8 @@ import styled from "styled-components";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faShoppingCart } from "@fortawesome/free-solid-svg-icons";
 import { faBars } from "@fortawesome/free-solid-svg-icons";
+import { TCartItem } from "src/types/artInfoTypes";
+import { IconProp } from "@fortawesome/fontawesome-svg-core";
 
 const Nav = styled.nav`
   background: #444;
@@ -56,7 +58,7 @@ const Bars = styled.div`
   }
 `;
 
-const DropdownNav = styled.div`
+const DropdownNav = styled.div<{ showDropdown: boolean }>`
   display: none;
   @media screen and (${(props) => props.theme.sm}) {
     /* display: ${(props) => (props.showDropdown ? "flex" : "none")}; */
@@ -141,12 +143,6 @@ const LinkBtn = styled(Link)`
   @media screen and (${(props) => props.theme.sm}) {
     margin: auto 40vw;
   }
-
-  /* &:hover {
-    transform: translateY(-2px);
-    box-shadow: 0px 10px 20px 10px rgba(0,0,0, 0.19);
-    background: #777;
-  } */
 `;
 const DropdownLinkBtn = styled(Link)`
   font-size: 1.6rem;
@@ -161,20 +157,20 @@ const DropdownLinkBtn = styled(Link)`
   @media screen and (${(props) => props.theme.sm}) {
     margin: auto 40vw;
   }
-
-  /* &:hover {
-    transform: translateY(-2px);
-    box-shadow: 0px 10px 20px 10px rgba(0,0,0, 0.19);
-    background: #777;
-  } */
 `;
 
 const LinkPTag = styled.p`
   text-align: center;
 `;
 
-function Navbar({ showMiniCart, setShowMiniCart, cart }) {
-  const [showDropdown, setShowDropdown] = useState(false);
+type Props = {
+  showMiniCart: boolean;
+  setShowMiniCart: React.Dispatch<React.SetStateAction<boolean>>;
+  cart: TCartItem[];
+};
+
+function Navbar({ showMiniCart, setShowMiniCart, cart }: Props) {
+  const [showDropdown, setShowDropdown] = useState<boolean>(false);
   const dropdown = () => setShowDropdown(!showDropdown);
 
   const totalItems = cart.reduce((sum, { qty }) => sum + qty, 0);
@@ -200,10 +196,10 @@ function Navbar({ showMiniCart, setShowMiniCart, cart }) {
               onClick={() => setShowMiniCart(!showMiniCart)}
             >
               <NumItemsInCart>{totalItems}</NumItemsInCart>
-              <FontAwesomeIcon icon={faShoppingCart} />
+              <FontAwesomeIcon icon={faShoppingCart as IconProp} />
             </ShoppingCartDiv>
             <Bars onClick={() => dropdown()}>
-              <FontAwesomeIcon icon={faBars} />
+              <FontAwesomeIcon icon={faBars as IconProp} />
             </Bars>
           </Nav>
           {showDropdown && (
