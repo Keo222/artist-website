@@ -9,6 +9,8 @@ import {
 import { v4 as uuid } from "uuid";
 
 import MiniCartItem from "./MiniCartItem";
+import { TCartItem, TSaleArt } from "src/types/artInfoTypes";
+import { IconProp } from "@fortawesome/fontawesome-svg-core";
 
 const MiniCartContainer = styled.div`
   z-index: 10;
@@ -22,7 +24,6 @@ const MiniCartContainer = styled.div`
   border-radius: 0 0 0 10px;
   box-shadow: 0 10px 10px 10px rgba(0, 0, 0, 0.3);
   display: flex;
-  /* transform: translateY(-100rem); */
   flex-direction: column;
   transition: all 0.8s;
   justify-content: space-between;
@@ -136,6 +137,15 @@ const PurchaseButton = styled(Link)`
   }
 `;
 
+type Props = {
+  setShowMiniCart: React.Dispatch<React.SetStateAction<boolean>>;
+  showMiniCart: boolean;
+  art: TSaleArt[];
+  cart: TCartItem[];
+  setCart: React.Dispatch<React.SetStateAction<TCartItem[]>>;
+  updateCartQty: (newId: string, newQty: number) => void;
+};
+
 function MiniCart({
   setShowMiniCart,
   showMiniCart,
@@ -143,22 +153,28 @@ function MiniCart({
   cart,
   setCart,
   updateCartQty,
-}) {
+}: Props) {
   const cartItemCards = cart.map((c) => {
-    const item = art.find((i) => i.id === c.id);
-    return (
-      <MiniCartItem
-        key={uuid()}
-        name={item.name}
-        price={item.price}
-        id={item.id}
-        cart={cart}
-        setCart={setCart}
-        qty={c.qty}
-        updateCartQty={updateCartQty}
-        art={item.img}
-      />
+    const item: TSaleArt | undefined = art.find(
+      (i: TSaleArt) => i.id === c.id
     );
+    if (typeof item !== "undefined") {
+      return (
+        <MiniCartItem
+          key={uuid()}
+          name={item.name}
+          price={item.price}
+          id={item.id}
+          cart={cart}
+          setCart={setCart}
+          qty={c.qty}
+          updateCartQty={updateCartQty}
+          art={item.img}
+        />
+      );
+    } else {
+      return <p>Item Not Found</p>;
+    }
   });
 
   const findTotal = () => {
@@ -180,28 +196,28 @@ function MiniCart({
   useEffect(() => {
     if (screenWidth < 501) {
       console.log("SMALL SCREEN");
-      document.getElementById("root").style.overflowY = "hidden";
-      document.getElementById("root").style.position = "fixed";
+      document.getElementById("root")!.style.overflowY = "hidden";
+      document.getElementById("root")!.style.position = "fixed";
     }
     return () => {
-      document.getElementById("root").style.overflowY = "initial";
-      document.getElementById("root").style.position = "initial";
+      document.getElementById("root")!.style.overflowY = "initial";
+      document.getElementById("root")!.style.position = "initial";
     };
   });
 
   return (
-    <MiniCartContainer visible={setShowMiniCart}>
+    <MiniCartContainer>
       {/* CART TITLE */}
       <TitleContainer>
         <TitleDiv>
           <IconContainer>
-            <FontAwesomeIcon icon={faShoppingCart} />
+            <FontAwesomeIcon icon={faShoppingCart as IconProp} />
           </IconContainer>
           <Title>Items in Cart:</Title>
         </TitleDiv>
         <CloseIconContainer>
           <CloseButton onClick={() => setShowMiniCart(!showMiniCart)}>
-            <FontAwesomeIcon icon={faTimes} />
+            <FontAwesomeIcon icon={faTimes as IconProp} />
           </CloseButton>
         </CloseIconContainer>
       </TitleContainer>

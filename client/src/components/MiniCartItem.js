@@ -104,7 +104,7 @@ function MiniCartItem({
   cart,
   setCart,
   qty,
-  setCartSelect,
+  updateCartQty,
   art,
 }) {
   const deleteItem = (item) => {
@@ -132,7 +132,7 @@ function MiniCartItem({
               name="numItems"
               id="numItems"
               defaultValue={parseInt(qty)}
-              onChange={(e) => setCartSelect(id, parseInt(e.target.value))}
+              onChange={(e) => updateCartQty(id, parseInt(e.target.value))}
             >
               {/* <option value="0">0</option> */}
               <option value="1">1</option>
