@@ -1,7 +1,12 @@
 import React, { useState } from "react";
-import styled from "styled-components";
+
+// Routing
 import { Link, useLocation } from "react-router-dom";
 
+// Styling
+import styled from "styled-components";
+
+// Font Awesome Icons
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faShoppingCart } from "@fortawesome/free-solid-svg-icons";
 import { faBars } from "@fortawesome/free-solid-svg-icons";
@@ -168,7 +173,7 @@ const LinkPTag = styled.p`
   text-align: center;
 `;
 
-function Navbar({ setShowMiniCart, setMiniCart, cart }) {
+function Navbar({ showMiniCart, setShowMiniCart, cart }) {
   const [showDropdown, setShowDropdown] = useState(false);
   const dropdown = () => setShowDropdown(!showDropdown);
 
@@ -191,7 +196,9 @@ function Navbar({ setShowMiniCart, setMiniCart, cart }) {
               <LinkBtn to="/about">About</LinkBtn>
               <LinkBtn to="/contact">Commissions</LinkBtn>
             </NavLinks>
-            <ShoppingCartDiv onClick={() => setMiniCart(!setShowMiniCart)}>
+            <ShoppingCartDiv
+              onClick={() => setShowMiniCart(!showMiniCart)}
+            >
               <NumItemsInCart>{totalItems}</NumItemsInCart>
               <FontAwesomeIcon icon={faShoppingCart} />
             </ShoppingCartDiv>

@@ -29,7 +29,7 @@ const PageLayout = ({
   return (
     <>
       <Navbar
-        setMiniCart={showMiniCart}
+        showMiniCart={showMiniCart}
         setShowMiniCart={setShowMiniCart}
         cart={cart}
       />

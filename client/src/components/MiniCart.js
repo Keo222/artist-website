@@ -21,7 +21,6 @@ const MiniCartContainer = styled.div`
   background: #ddd;
   border-radius: 0 0 0 10px;
   box-shadow: 0 10px 10px 10px rgba(0, 0, 0, 0.3);
-  /* display: ${(props) => (props.visible ? "flex" : "none")}; */
   display: flex;
   /* transform: translateY(-100rem); */
   flex-direction: column;

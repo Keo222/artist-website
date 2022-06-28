@@ -33,7 +33,7 @@ const GlobalStyle = createGlobalStyle`
   `;
 
 function App() {
-  const [showMiniCart, setShowMiniCart] = useState(false);
+  const [showMiniCart, setShowMiniCart] = useState<boolean>(false);
   const [cart, setCart] = useState<TCartItem[]>([]);
 
   useEffect(() => {
