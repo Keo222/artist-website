@@ -43,7 +43,7 @@ function App() {
     }
   }, []);
 
-  const setAddCartButton = (item: string) => {
+  const addToCart = (item: string) => {
     let updatedCart: TCartItem[];
     const included = cart.some((i: TCartItem) => i.id === item);
     if (!included) {
@@ -86,11 +86,7 @@ function App() {
             <Route
               path="/art"
               element={
-                <Art
-                  art={saleArt}
-                  cart={cart}
-                  setAddCartButton={setAddCartButton}
-                />
+                <Art art={saleArt} cart={cart} addToCart={addToCart} />
               }
             />
             <Route path="/about" element={<About />} />

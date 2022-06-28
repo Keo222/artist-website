@@ -99,7 +99,23 @@ const Price = styled.h5`
   margin: 1rem 0;
 `;
 
-function ArtSaleItem({ name, desc, price, pic, id, setAddCartButton }) {
+type Props = {
+  name: string;
+  desc: string;
+  price: number;
+  pic: string;
+  id: string;
+  setAddCartButton: (item: string) => void;
+};
+
+function ArtSaleItem({
+  name,
+  desc,
+  price,
+  pic,
+  id,
+  setAddCartButton,
+}: Props) {
   const [loading, setLoading] = useState(false);
 
   const loadingClick = () => {
@@ -110,8 +126,6 @@ function ArtSaleItem({ name, desc, price, pic, id, setAddCartButton }) {
     setLoading(true);
     console.log(loading);
     setTimeout(() => setLoading(false), 700);
-    // setTimeout(setLoading(prevLoading => !prevLoading), 5000);
-    // console.log(loading)
   };
 
   return (

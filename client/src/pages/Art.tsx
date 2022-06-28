@@ -3,6 +3,9 @@ import styled from "styled-components";
 
 import ArtSaleItem from "../components/ArtSaleItem";
 
+// Types
+import { TCartItem, TSaleArt } from "src/types/artInfoTypes";
+
 import { TextDiv, PageDiv } from "../StyledElements/divs";
 import { Heading, ParagraphText } from "../StyledElements/typography";
 
@@ -39,9 +42,13 @@ const SaleItems = styled.div`
   }
 `;
 
-// PRINT CART STATE
+type Props = {
+  art: TSaleArt[];
+  cart: TCartItem[];
+  addToCart: (item: string) => void;
+};
 
-function Art({ art, cart, setAddCartButton }) {
+function Art({ art, cart, addToCart }: Props) {
   const artListings = art.map((a) => (
     <ArtSaleItem
       name={a.name}
@@ -49,8 +56,7 @@ function Art({ art, cart, setAddCartButton }) {
       price={a.price}
       pic={a.img}
       id={a.id}
-      cart={cart}
-      setAddCartButton={setAddCartButton}
+      setAddCartButton={addToCart}
       key={a.id}
     />
   ));
