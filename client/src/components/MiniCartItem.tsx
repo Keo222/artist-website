@@ -2,6 +2,8 @@ import React from "react";
 import styled from "styled-components";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTimes } from "@fortawesome/free-solid-svg-icons";
+import { TCartItem, TSaleArt } from "src/types/artInfoTypes";
+import { IconProp } from "@fortawesome/fontawesome-svg-core";
 
 const ItemAndDelete = styled.div`
   width: 100%;
@@ -97,6 +99,17 @@ const StyledSelect = styled.select`
   }
 `;
 
+type Props = {
+  name: string;
+  price: number;
+  id: string;
+  cart: TCartItem[];
+  setCart: React.Dispatch<React.SetStateAction<TCartItem[]>>;
+  qty: number;
+  updateCartQty: (newId: string, newQty: number) => void;
+  artImg: string;
+};
+
 function MiniCartItem({
   name,
   price,
@@ -105,10 +118,10 @@ function MiniCartItem({
   setCart,
   qty,
   updateCartQty,
-  art,
-}) {
-  const deleteItem = (item) => {
-    const idx = cart.findIndex((i) => i.id === item);
+  artImg,
+}: Props) {
+  const deleteItem = (itemId: string) => {
+    const idx = cart.findIndex((i) => i.id === itemId);
     const cartCopy = [...cart];
     cartCopy.splice(idx, 1);
     setCart(cartCopy);
@@ -117,12 +130,12 @@ function MiniCartItem({
     <ItemAndDelete>
       <DeleteDiv>
         <DeleteItem onClick={() => deleteItem(id)}>
-          <StyledFAIcon icon={faTimes} />
+          <StyledFAIcon icon={faTimes as IconProp} />
         </DeleteItem>
       </DeleteDiv>
       <MiniItemContainer>
         <ImgDiv>
-          <ArtImg src={art} />
+          <ArtImg src={artImg} />
         </ImgDiv>
         <NameAndQty>
           <ItemName>{name}</ItemName>
@@ -131,7 +144,7 @@ function MiniCartItem({
             <StyledSelect
               name="numItems"
               id="numItems"
-              defaultValue={parseInt(qty)}
+              defaultValue={qty}
               onChange={(e) => updateCartQty(id, parseInt(e.target.value))}
             >
               {/* <option value="0">0</option> */}

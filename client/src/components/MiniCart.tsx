@@ -169,7 +169,7 @@ function MiniCart({
           setCart={setCart}
           qty={c.qty}
           updateCartQty={updateCartQty}
-          art={item.img}
+          artImg={item.img}
         />
       );
     } else {
