@@ -1,4 +1,5 @@
 import React from "react";
+import { TSaleArt, TCartItem } from "src/types/artInfoTypes";
 import styled from "styled-components";
 
 import CartItem from "./CartItem";
@@ -33,23 +34,35 @@ const Total = styled.h5`
   }
 `;
 
-function ShoppingCart({ art, cart, setCartSelect, setCart }) {
+type Props = {
+  art: TSaleArt[];
+  cart: TCartItem[];
+  updateCartQty: (newId: string, newQty: number) => void;
+  setCart: React.Dispatch<React.SetStateAction<TCartItem[]>>;
+};
+
+function ShoppingCart({ art, cart, updateCartQty, setCart }: Props) {
   const cartItemCards = cart.map((c) => {
-    const item = art.find((i) => i.id === c.id);
-    return (
-      <CartItem
-        name={item.name}
-        desc={item.desc}
-        id={item.id}
-        key={item.id}
-        price={item.price}
-        img={item.img}
-        qty={c.qty}
-        cart={cart}
-        setCart={setCart}
-        setCartSelect={setCartSelect}
-      />
-    );
+    const item: TSaleArt | undefined = art.find((i) => i.id === c.id);
+    if (typeof item !== "undefined") {
+      return (
+        <CartItem
+          name={item.name}
+          desc={item.desc}
+          id={item.id}
+          key={item.id}
+          price={item.price}
+          img={item.img}
+          qty={c.qty}
+          cart={cart}
+          setCart={setCart}
+          updateCartQty={updateCartQty}
+        />
+      );
+    } else {
+      console.log("Error finding item for cart item");
+      return;
+    }
   });
 
   const findTotal = () => {
