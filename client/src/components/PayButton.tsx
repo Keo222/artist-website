@@ -21,16 +21,18 @@ const BtnDisabled = styled(BtnPay)`
 
 type Props = {
   isDisabled: boolean;
+  children: JSX.Element;
+  id?: string;
 };
 
-function PayButton({ isDisabled }: Props) {
+function PayButton({ isDisabled, children, id }: Props) {
   return (
     <div>
       Is the button disabled: {isDisabled ? "yes" : "no"}
       {isDisabled ? (
         <BtnDisabled disabled>Disabled</BtnDisabled>
       ) : (
-        <BtnPay>Pay Now</BtnPay>
+        <BtnPay>{children}</BtnPay>
       )}
     </div>
   );

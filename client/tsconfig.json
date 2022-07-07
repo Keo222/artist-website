@@ -16,6 +16,11 @@
     "incremental": true,
     "baseUrl": "."
   },
-  "include": ["**/*.ts", "**/*.tsx", "src/components/CheckoutForm.js"],
+  "include": [
+    "**/*.ts",
+    "**/*.tsx",
+    "src/components/CheckoutForm.tsx",
+    "src/pages/Checkout.js"
+  ],
   "exclude": ["node_modules"]
 }
