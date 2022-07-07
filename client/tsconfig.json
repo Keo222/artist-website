@@ -20,7 +20,7 @@
     "**/*.ts",
     "**/*.tsx",
     "src/components/CheckoutForm.tsx",
-    "src/pages/Checkout.js"
+    "src/pages/Checkout.tsx"
   ],
   "exclude": ["node_modules"]
 }
