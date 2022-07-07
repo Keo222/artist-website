@@ -16,11 +16,6 @@
     "incremental": true,
     "baseUrl": "."
   },
-  "include": [
-    "**/*.ts",
-    "**/*.tsx",
-    "src/components/CheckoutForm.tsx",
-    "src/pages/Checkout.tsx"
-  ],
+  "include": ["**/*.ts", "**/*.tsx", "src/reportWebVitals.js"],
   "exclude": ["node_modules"]
 }
