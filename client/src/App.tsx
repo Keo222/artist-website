@@ -17,7 +17,6 @@ import PageLayout from "./components/Layouts/PageLayout";
 import Home from "./pages/Home";
 import About from "./pages/About";
 import Portfolio from "./pages/Portfolio";
-import Contact from "./pages/Contact";
 import Checkout from "./pages/Checkout";
 import Art from "./pages/Art";
 import AdminLogin from "./pages/Admin/AdminLogin";
@@ -92,7 +91,6 @@ function App() {
             />
             <Route path="/about" element={<About />} />
             <Route path="/portfolio" element={<Portfolio />} />
-            <Route path="/contact" element={<Contact />} />
             <Route
               path="/checkout"
               element={
