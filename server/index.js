@@ -5,11 +5,6 @@ const cors = require("cors");
 const pool = require("./db");
 const path = require("path");
 
-// const nodemailer = require("nodemailer");
-// const { google } = require("googleapis");
-// const { OAuth2Client } = require("google-auth-library");
-// const OAuth2 = google.auth.OAuth2;
-
 const PORT = process.env.PORT || 3001;
 
 const stripe = require("stripe")(process.env.SECRET_KEY);
