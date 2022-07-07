@@ -2,7 +2,7 @@ import React from "react";
 import styled from "styled-components";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTimes } from "@fortawesome/free-solid-svg-icons";
-import { TCartItem, TSaleArt } from "src/types/artInfoTypes";
+import { TCartItem } from "src/types/artInfoTypes";
 import { IconProp } from "@fortawesome/fontawesome-svg-core";
 
 const ItemAndDelete = styled.div`

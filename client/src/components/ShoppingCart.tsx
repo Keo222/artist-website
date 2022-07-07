@@ -61,7 +61,7 @@ function ShoppingCart({ art, cart, updateCartQty, setCart }: Props) {
       );
     } else {
       console.log("Error finding item for cart item");
-      return;
+      return null;
     }
   });
 
