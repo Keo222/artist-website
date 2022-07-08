@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
 import { createGlobalStyle } from "styled-components";
@@ -33,14 +33,14 @@ const GlobalStyle = createGlobalStyle`
 
 function App() {
   const [showMiniCart, setShowMiniCart] = useState<boolean>(false);
-  const [cart, setCart] = useState<TCartItem[]>([]);
+  const [cart, setCart] = useState<TCartItem[]>(cartInit());
 
-  useEffect(() => {
+  function cartInit() {
     if (localStorage.getItem("cart") !== null) {
       const cartItems = localStorage.getItem("cart");
-      setCart(cartItems ? JSON.parse(cartItems) : null);
+      return cartItems ? JSON.parse(cartItems) : [];
     }
-  }, []);
+  }
 
   const addToCart = (item: string) => {
     let updatedCart: TCartItem[];
