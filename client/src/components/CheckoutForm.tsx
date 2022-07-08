@@ -96,8 +96,8 @@ export default function CheckoutForm() {
       <form id="payment-form" onSubmit={handleSubmit}>
         <PaymentElement id="payment-element" />
         <PayButton
-          isDisabled={isLoading || !stripe || !elements}
-          // isDisabled={true}
+          // isDisabled={isLoading || !stripe || !elements}
+          isDisabled={true}
           id="submit"
         >
           <span id="button-text">
