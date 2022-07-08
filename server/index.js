@@ -36,7 +36,10 @@ const calculateOrderAmount = (items) => {
   let total;
   if (items.every((item) => Object.keys(itemCosts).includes(item.id))) {
     try {
-      total = items.reduce((sum, item) => sum + itemCosts[item.id], 0);
+      total = items.reduce(
+        (sum, item) => sum + itemCosts[item.id] * item.qty,
+        0
+      );
     } catch (error) {
       console.log(error);
       return null;
