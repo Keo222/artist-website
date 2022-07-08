@@ -54,8 +54,6 @@ const calculateOrderAmount = (items) => {
 // Stripe API call to create payment intent. Sends total cost of items to Stripe with account info.
 app.post("/create-payment-intent", async (req, res) => {
   const { items } = req.body;
-  console.log(items);
-  console.log(calculateOrderAmount(items));
   // Create a PaymentIntent with the order amount and currency
   if (
     typeof calculateOrderAmount(items) === "number" &&
