@@ -6,6 +6,7 @@ import {
 } from "@stripe/react-stripe-js";
 import PayButton from "./PayButton";
 import styled from "styled-components";
+import StripeMessage from "./StripeMessage";
 
 const FormContainer = styled.div`
   width: 80%;
@@ -108,7 +109,7 @@ export default function CheckoutForm() {
           </span>
         </PayButton>
         {/* Show any error or success messages */}
-        {message && <div id="payment-message">{message}</div>}
+        {message && <StripeMessage>{message}</StripeMessage>}
       </form>
     </FormContainer>
   );
