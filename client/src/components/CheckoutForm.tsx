@@ -7,9 +7,9 @@ import {
 import PayButton from "./PayButton";
 import styled from "styled-components";
 
-const CenteringDiv = styled.div`
+const FormContainer = styled.div`
   width: 80%;
-  margin: 0 auto;
+  margin-inline: auto;
 `;
 
 export default function CheckoutForm() {
@@ -29,8 +29,6 @@ export default function CheckoutForm() {
     );
 
     if (!clientSecret) {
-      // *************************
-      console.log("NO SECRET");
       return;
     }
 
@@ -94,25 +92,24 @@ export default function CheckoutForm() {
   };
 
   return (
-    <CenteringDiv>
+    <FormContainer>
       <form id="payment-form" onSubmit={handleSubmit}>
         <PaymentElement id="payment-element" />
         <PayButton
-          // isDisabled={isLoading || !stripe || !elements}
-          isDisabled={true}
+          isDisabled={isLoading || !stripe || !elements}
+          // isDisabled={true}
           id="submit"
         >
           <span id="button-text">
-            {isLoading ? (
-              <div className="spinner" id="spinner"></div>
-            ) : (
-              "Pay now"
-            )}
+            {isLoading
+              ? // <div className="spinner" id="spinner"></div>
+                "Loading..."
+              : "Pay now"}
           </span>
         </PayButton>
         {/* Show any error or success messages */}
         {message && <div id="payment-message">{message}</div>}
       </form>
-    </CenteringDiv>
+    </FormContainer>
   );
 }

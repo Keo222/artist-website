@@ -5,7 +5,8 @@ import styled from "styled-components";
 const BtnPay = styled.button`
   font-size: 1.8rem;
   display: block;
-  margin: 1rem auto;
+  margin-inline: auto;
+  margin-top: 4rem;
   padding: 1.5rem 3.5rem;
   border-radius: 7px;
   background: green;
@@ -25,10 +26,9 @@ type Props = {
   id?: string;
 };
 
-function PayButton({ isDisabled, children, id }: Props) {
+function PayButton({ isDisabled, children }: Props) {
   return (
     <div>
-      Is the button disabled: {isDisabled ? "yes" : "no"}
       {isDisabled ? (
         <BtnDisabled disabled>Disabled</BtnDisabled>
       ) : (

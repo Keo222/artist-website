@@ -27,9 +27,9 @@ const itemCosts = {
 
 const calculateOrderAmount = (items) => {
   let total;
-  if (items.every((item) => Object.keys(itemCosts).includes(item))) {
+  if (items.every((item) => Object.keys(itemCosts).includes(item.id))) {
     try {
-      total = items.reduce((sum, item) => sum + itemCosts[item], 0);
+      total = items.reduce((sum, item) => sum + itemCosts[item.id], 0);
     } catch (error) {
       console.log(error);
       return;
@@ -43,10 +43,10 @@ const calculateOrderAmount = (items) => {
 
 app.post("/create-payment-intent", async (req, res) => {
   const { items } = req.body;
-
   // Create a PaymentIntent with the order amount and currency
   const paymentIntent = await stripe.paymentIntents.create({
     amount: calculateOrderAmount(items),
+    // amount: 1800,
     currency: "usd",
     automatic_payment_methods: {
       enabled: true,
