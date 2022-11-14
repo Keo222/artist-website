@@ -3,6 +3,8 @@ export type TCartItem = {
   qty: number;
 };
 
+export type TCart = TCartItem[] | [];
+
 export type TSaleArt = {
   name: string;
   desc: string;

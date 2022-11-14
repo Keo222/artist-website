@@ -10,7 +10,7 @@ import styled from "styled-components";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faShoppingCart } from "@fortawesome/free-solid-svg-icons";
 import { faBars } from "@fortawesome/free-solid-svg-icons";
-import { TCartItem } from "src/types/artInfoTypes";
+import { TCart, TCartItem } from "src/types/artInfoTypes";
 import { IconProp } from "@fortawesome/fontawesome-svg-core";
 
 const Nav = styled.nav`
@@ -166,14 +166,17 @@ const LinkPTag = styled.p`
 type Props = {
   showMiniCart: boolean;
   setShowMiniCart: React.Dispatch<React.SetStateAction<boolean>>;
-  cart: TCartItem[];
+  cart: TCartItem[] | [];
 };
 
 function Navbar({ showMiniCart, setShowMiniCart, cart }: Props) {
   const [showDropdown, setShowDropdown] = useState<boolean>(false);
   const dropdown = () => setShowDropdown(!showDropdown);
 
-  const totalItems = cart.reduce((sum, { qty }) => sum + qty, 0);
+  const totalItems =
+    cart.length > 0
+      ? cart.map((item) => item.qty).reduce((sum, qty) => sum + qty, 0)
+      : 0;
   let location = useLocation();
 
   return (
@@ -192,9 +195,7 @@ function Navbar({ showMiniCart, setShowMiniCart, cart }: Props) {
               <LinkBtn to="/about">About</LinkBtn>
               <LinkBtn to="/contact">Commissions</LinkBtn>
             </NavLinks>
-            <ShoppingCartDiv
-              onClick={() => setShowMiniCart(!showMiniCart)}
-            >
+            <ShoppingCartDiv onClick={() => setShowMiniCart(!showMiniCart)}>
               <NumItemsInCart>{totalItems}</NumItemsInCart>
               <FontAwesomeIcon icon={faShoppingCart as IconProp} />
             </ShoppingCartDiv>
@@ -210,10 +211,7 @@ function Navbar({ showMiniCart, setShowMiniCart, cart }: Props) {
                 </DropdownLinkBtn>
               </LinkPTag>
               <LinkPTag>
-                <DropdownLinkBtn
-                  to="/portfolio"
-                  onClick={() => dropdown()}
-                >
+                <DropdownLinkBtn to="/portfolio" onClick={() => dropdown()}>
                   Portfolio
                 </DropdownLinkBtn>
               </LinkPTag>

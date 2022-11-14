@@ -35,11 +35,9 @@ function App() {
   const [showMiniCart, setShowMiniCart] = useState<boolean>(false);
   const [cart, setCart] = useState<TCartItem[]>(cartInit());
 
-  function cartInit() {
-    if (localStorage.getItem("cart") !== null) {
-      const cartItems = localStorage.getItem("cart");
-      return cartItems ? JSON.parse(cartItems) : [];
-    }
+  function cartInit(): TCartItem[] | [] {
+    const cartItems = localStorage.getItem("cart");
+    return cartItems ? (JSON.parse(cartItems) as TCartItem[]) : [];
   }
 
   const addToCart = (item: string) => {
@@ -85,9 +83,7 @@ function App() {
             <Route path="/" element={<Home />} />
             <Route
               path="/art"
-              element={
-                <Art art={saleArt} cart={cart} addToCart={addToCart} />
-              }
+              element={<Art art={saleArt} cart={cart} addToCart={addToCart} />}
             />
             <Route path="/about" element={<About />} />
             <Route path="/portfolio" element={<Portfolio />} />
