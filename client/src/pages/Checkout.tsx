@@ -30,7 +30,7 @@ function Checkout({ art, cart, setCart, updateCartQty }: Props) {
   useEffect(() => {
     console.log("get new stripe payment intent");
     // Create PaymentIntent as soon as the page loads
-    if (cart !== []) {
+    if (cart.length !== 0) {
       fetch("/create-payment-intent", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
